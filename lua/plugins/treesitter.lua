@@ -2,6 +2,7 @@ local Plugin = { 'nvim-treesitter/nvim-treesitter' }
 
 Plugin.dependencies = {
   { 'nvim-treesitter/nvim-treesitter-textobjects', pin = true },
+  { 'nvim-treesitter/nvim-treesitter-context' },
   { 'JoosepAlviste/nvim-ts-context-commentstring' },
 }
 
