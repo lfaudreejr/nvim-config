@@ -45,9 +45,18 @@ return {
 					and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
 			end
 
-      require("luasnip.loaders.from_vscode").lazy_load()
+			require("luasnip.loaders.from_vscode").lazy_load()
 
 			cmp.setup({
+				snippet = {
+					-- REQUIRED - you must specify a snippet engine
+					expand = function(args)
+						-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+						luasnip.lsp_expand(args.body) -- For `luasnip` users.
+						-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+						-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+					end,
+				},
 				sources = {
 					{ name = "copilot" },
 					{ name = "nvim_lsp_signature_help" },
@@ -163,12 +172,13 @@ return {
 				"html",
 				"marksman",
 				"svelte",
+				"clojure_lsp",
 			})
 
 			-- (Optional) Configure lua language server for neovim
 			require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 
-			lsp.setup()
+			lsp.setup({ manage_nvim_cmp = { set_sources = "recommended" }})
 		end,
 	},
 

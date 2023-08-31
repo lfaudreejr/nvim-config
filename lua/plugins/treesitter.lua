@@ -109,6 +109,7 @@ function Plugin.config()
       'lua',
       'vim',
       'vimdoc',
+      'clojure'
     },
   }
 end
