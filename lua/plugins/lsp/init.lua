@@ -45,6 +45,8 @@ return {
 					and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
 			end
 
+      require("luasnip.loaders.from_vscode").lazy_load()
+
 			cmp.setup({
 				sources = {
 					{ name = "copilot" },
@@ -139,7 +141,7 @@ return {
 		config = function()
 			-- This is where all the LSP shenanigans will live
 
-			local lsp = require("lsp-zero")
+			local lsp = require("lsp-zero").preset({})
 
 			lsp.on_attach(function(client, bufnr)
 				-- see :help lsp-zero-keybindings

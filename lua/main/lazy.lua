@@ -34,7 +34,8 @@ require("lazy").setup({
 	  { import = "plugins" },
     { import = "plugins.lsp" },
     { import = "plugins.ux" },
-    { import = "plugins.ux.mini" }
+    { import = "plugins.ux.mini" },
+    { import = "plugins.extras.lang" }
   },
 })
 
