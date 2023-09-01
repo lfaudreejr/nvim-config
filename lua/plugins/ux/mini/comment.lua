@@ -1,5 +1,7 @@
 local P = { 'echasnovski/mini.comment', version = false }
 
+P.event = "VeryLazy"
+
 function P.config()
   require('mini.comment').setup({
   -- Options which control module behavior

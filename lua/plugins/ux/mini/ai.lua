@@ -1,5 +1,6 @@
 local P = { "echasnovski/mini.ai" }
 
+P.event = "VeryLazy"
 P.keys = {
   { "a", mode = { "x", "o" } },
   { "i", mode = { "x", "o" } },

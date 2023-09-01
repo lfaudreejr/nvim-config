@@ -1,5 +1,6 @@
 local P = { "echasnovski/mini.jump" }
 
+P.event = "VeryLazy"
 P.opts = {}
 P.keys = { "f", "F", "t", "T" }
 

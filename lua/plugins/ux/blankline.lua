@@ -1,5 +1,7 @@
 local P = { "lukas-reineke/indent-blankline.nvim" }
 
+P.enabled = false
+
 P.event = { "BufReadPost", "BufNewFile" }
 
 function P.config()
