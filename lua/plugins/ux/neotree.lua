@@ -2,6 +2,8 @@ local P = {
     "nvim-neo-tree/neo-tree.nvim",
 }
 
+P.enabled = false
+
 P.branch = "v3.x"
 P.event = "VeryLazy"
 
