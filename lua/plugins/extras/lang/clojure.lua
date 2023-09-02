@@ -38,6 +38,7 @@ return {
 		init = function()
 			-- Set configuration options here
 			vim.g["conjure#debug"] = true
+      vim.g['conjure#extract#tree_sitter#enabled'] = true
 
 			vim.api.nvim_create_autocmd("BufNewFile", {
 				group = vim.api.nvim_create_augroup("conjure_log_disable_lsp", { clear = true }),
