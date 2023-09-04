@@ -12,10 +12,10 @@ function Plugin.config()
 
 	wk.register({
 		["<leader>"] = {
-      b = "+buffer",
-      c = {
-        name = "+code",
-      },
+			b = "+buffer",
+			c = {
+				name = "+code",
+			},
 			f = {
 				name = "+file",
 				b = "Find Buffer",
@@ -25,10 +25,24 @@ function Plugin.config()
 				r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
 				n = { "<cmd>Telescope notify<CR>", "Find Notification" },
 			},
-      g = "+git",
-      n = "+notifications",
-			q = "+sessions",
+			g = "+git",
+			n = "+notifications",
+			s = "+sessions",
 			z = "+environment",
+		},
+		g = {
+			d = "Goto Definition",
+			D = "Goto Declaration",
+			i = "Goto Implementation",
+			o = "Goto Type Definition",
+			r = "Goto References",
+			s = "Goto Signature Help",
+			["<F2>"] = "Rename",
+			["<F3>"] = "Format",
+			["<F4>"] = "Code Action",
+			["gl"] = "Open Float",
+			["[d"] = "Goto Prev",
+			["]d"] = "Goto Next",
 		},
 	})
 

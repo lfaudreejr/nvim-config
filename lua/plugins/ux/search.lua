@@ -44,7 +44,7 @@ return {
 		},
     --stylua: ignore
     keys = {
-      { "<leader>sR", function() require("ssr").open() end, mode = {"n", "x"}, desc = "Search and Replace (SSR)" },
+      { "<leader>fR", function() require("ssr").open() end, mode = {"n", "x"}, desc = "Find and Replace (SSR)" },
     },
 	},
 }
