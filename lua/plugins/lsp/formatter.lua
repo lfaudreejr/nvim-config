@@ -10,6 +10,9 @@ function P.config()
 		-- Set the log level
 		log_level = vim.log.levels.WARN,
 		filetype = {
+      go = {
+        require("formatter.filetypes.go").gofmt,
+      },
 			javascript = {
 				require("formatter.filetypes.javascript").prettierd,
 			},
