@@ -34,6 +34,7 @@ function Plugin.config()
 			d = "Goto Definition",
 			D = "Goto Declaration",
 			i = "Goto Implementation",
+      l = "Goto Diagnostics",
 			o = "Goto Type Definition",
 			r = "Goto References",
 			s = "Goto Signature Help",
