@@ -11,9 +11,4 @@ function M.close_buffer_with_confirmation()
     vim.cmd(':bdelete')
 end
 
----@param plugin string
-function M.has(plugin)
-  return require("lazy.core.config").spec.plugins[plugin] ~= nil
-end
-
 return M
