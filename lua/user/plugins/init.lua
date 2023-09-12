@@ -12,6 +12,7 @@ return {
 	{
 		"NTBBloodbath/doom-one.nvim",
 		lazy = false,
+    enabled = false,
 		init = function()
 			vim.o.background = "light"
 			-- Add color to cursor
