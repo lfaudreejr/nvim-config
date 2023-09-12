@@ -15,7 +15,6 @@ function M.setup()
 		nowait = false,
 	}
 
-
 	whichkey.setup({
 		window = {
 			border = "single",
@@ -23,7 +22,7 @@ function M.setup()
 		},
 	})
 
-  local n_keys = require("config.keymaps.n")
+  local n_keys = require("user.plugins.config.keymaps.n")
 
 	whichkey.register(n_keys, n_opts)
 end

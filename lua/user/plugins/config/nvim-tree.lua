@@ -1,12 +1,12 @@
 local M = {}
 
 function M.setup()
-	local status_ok, neotree = pcall(require, "nvim-tree")
+	local status_ok, nvimtree = pcall(require, "nvim-tree")
 	if not status_ok then
 		return nil
 	end
 
-	neotree.setup({
+	nvimtree.setup({
 		view = {
 			width = 30,
 		},

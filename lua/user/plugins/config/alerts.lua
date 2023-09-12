@@ -1,12 +1,12 @@
 local M = {}
 
 function M.setup()
-	local status_ok, notice = pcall(require, "noice")
+	local status_ok, noice = pcall(require, "noice")
 	if not status_ok then
 		return nil
 	end
 
-	notice.setup({
+	noice.setup({
 		lsp = {
 			-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 			override = {
