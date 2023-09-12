@@ -30,7 +30,6 @@ local servers = {
 }
 
 local function on_attach(client, bufnr)
-	print("attaching ", client)
 	-- Enable completion triggered by <C-X><C-O>
 	-- See `:help omnifunc` and `:help ins-completion` for more information.
 	-- vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -41,6 +40,12 @@ local function on_attach(client, bufnr)
 	-- vim.api.nvim_buf_set_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
   vim.bo[bufnr].formatexpr = "v:lua.vim.lsp.formatexpr()"
 
+  if client.server_capabilities.documentSymbolProvider then
+    local has_navic, navic = pcall(require, "navic")
+    if has_navic then
+      navic.attach(client, bufnr)
+    end
+  end
 	-- Configure key mappings
 	require("config.lsp.keymaps").setup(client, bufnr)
 end

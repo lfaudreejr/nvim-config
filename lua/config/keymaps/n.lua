@@ -31,7 +31,7 @@ return {
 			},
 			d = {
 				function()
-					require("neogen").generate()
+					require("neogen").generate({ type = "file" })
 				end,
 				"Annotate",
 			},
@@ -156,10 +156,4 @@ return {
 		},
 	},
 
-  ["m"] = {
-    name = "+mini",
-    s = {
-      name = "+surround"
-    }
-  }
 }

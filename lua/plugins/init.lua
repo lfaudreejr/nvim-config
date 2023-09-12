@@ -13,7 +13,7 @@ return {
 		"NTBBloodbath/doom-one.nvim",
 		lazy = false,
 		init = function()
-			vim.o.background = "light"
+			vim.o.background = "dark"
 			-- Add color to cursor
 			vim.g.doom_one_cursor_coloring = true
 			-- Set :terminal colors
@@ -247,42 +247,45 @@ return {
 	{
 		"danymat/neogen",
 		event = "BufEnter",
-		opts = {
-			snippet_engine = "luasnip",
-			enabled = true,
-			languages = {
-				lua = {
-					template = {
-						annotation_convention = "ldoc",
+		config = function()
+			require("neogen").setup({
+				snippet_engine = "luasnip",
+				enabled = true,
+				languages = {
+					lua = {
+						template = {
+							annotation_convention = "ldoc",
+						},
 					},
-				},
-				python = {
-					template = {
-						annotation_convention = "google_docstrings",
+					python = {
+						template = {
+							annotation_convention = "google_docstrings",
+						},
 					},
-				},
-				rust = {
-					template = {
-						annotation_convention = "rustdoc",
+					rust = {
+						template = {
+							annotation_convention = "rustdoc",
+						},
 					},
-				},
-				javascript = {
-					template = {
-						annotation_convention = "jsdoc",
+					javascript = {
+						template = {
+							annotation_convention = "jsdoc",
+						},
 					},
-				},
-				typescript = {
-					template = {
-						annotation_convention = "tsdoc",
+					typescript = {
+						template = {
+							annotation_convention = "tsdoc",
+						},
 					},
-				},
-				typescriptreact = {
-					template = {
-						annotation_convention = "tsdoc",
+					typescriptreact = {
+						template = {
+							annotation_convention = "tsdoc",
+						},
 					},
+					svelte = require("neogen.configurations.javascript"),
 				},
-			},
-		},
+			})
+		end,
 	},
 	{
 		"luukvbaal/statuscol.nvim",

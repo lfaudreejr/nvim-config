@@ -30,6 +30,7 @@ function M.setup(servers, options)
 
 	local capabilities =
 		vim.tbl_deep_extend("force", lsp_defaults.capabilities, cmp_nvim_lsp.default_capabilities())
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 	neodev.setup({})
 
@@ -63,7 +64,18 @@ function M.setup(servers, options)
 	mason.setup({})
 
 	mason_lspconfig.setup({
-		ensure_installed = vim.tbl_keys(servers),
+		-- ensure_installed = vim.tbl_keys(servers),
+    ensure_installed = {
+      "html",
+      "cssls",
+      "emmet_ls",
+      "jsonls",
+      "lua_ls",
+      "svelte",
+      "eslint",
+      "tsserver",
+      "tailwindcss"
+    }
 	})
 
 	mason_lspconfig.setup_handlers({

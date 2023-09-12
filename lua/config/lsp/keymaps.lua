@@ -21,7 +21,7 @@ local function keymappings(client, bufnr)
 	-- Whichkey
 	local l_keys = {
 		l = {
-			name = "Code",
+			name = "Lsp",
 			r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
 			a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
 			d = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Line Diagnostics" },
