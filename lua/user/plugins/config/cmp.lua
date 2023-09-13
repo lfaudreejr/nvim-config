@@ -61,13 +61,13 @@ function M.setup()
 				name = "copilot",
 			},
 			{
+				name = "conjure",
+			},
+			{
 				name = "nvim_lsp_signature_help",
 			},
 			{
 				name = "nvim_lsp",
-			},
-			{
-				name = "conjure",
 			},
 			{
 				name = "luasnip",
