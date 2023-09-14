@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup()
-	local status_ok, formatter = pcall(require, "formatter.util")
+	local status_ok, formatter = pcall(require, "formatter")
 	if not status_ok then
 		return nil
 	end
@@ -20,16 +20,15 @@ function M.setup()
 			},
 			javascript = {
 				-- require("formatter.filetypes.javascript").prettierd,
-				require("formatter.filetypes.javascript").prettier,
+        require("formatter.filetypes.javascript").prettier,
 			},
 			typescript = {
 				require("formatter.filetypes.typescript").prettier,
 			},
 			-- other formatters ...
 			svelte = {
-				-- require("formatter.filetypes.svelte").prettier,
+				require("formatter.filetypes.svelte").prettier,
 				-- require("formatter.filetypes.javascript").prettierd,
-				require("formatter.filetypes.javascript").prettier,
 			},
 			html = {
 				require("formatter.filetypes.html").prettier,
@@ -37,9 +36,9 @@ function M.setup()
 			css = {
 				require("formatter.filetypes.css").prettier,
 			},
-			json = {
-				require("formatter.filetypes.json").fixjson,
-			},
+      json = {
+        require("formatter.filetypes.json").prettier,
+      },
 			lua = {
 				-- "formatter.filetypes.lua" defines default configurations for the
 				-- "lua" filetype
