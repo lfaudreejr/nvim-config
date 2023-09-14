@@ -10,11 +10,20 @@ return {
 	},
 	{ "yamatsum/nvim-nonicons", config = true, enabled = false },
 	{
+		"navarasu/onedark.nvim",
+    enabled = true,
+		config = function()
+			local onedark = require("onedark")
+			onedark.setup({ style = "dark" })
+			onedark.load()
+		end,
+	},
+	{
 		"NTBBloodbath/doom-one.nvim",
 		lazy = false,
 		enabled = false,
 		init = function()
-			vim.o.background = "light"
+			vim.o.background = "dark"
 			-- Add color to cursor
 			vim.g.doom_one_cursor_coloring = true
 			-- Set :terminal colors
@@ -345,7 +354,7 @@ return {
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
 		-- event = "InsertEnter",
-    event = "BufEnter",
+		event = "BufEnter",
 		config = function()
 			require("user.plugins.config.copilot").setup()
 		end,
@@ -353,7 +362,7 @@ return {
 	{
 		"zbirenbaum/copilot-cmp",
 		-- event = "InsertEnter",
-    dependencies = { "zbirenbaum/copilot.lua" },
+		dependencies = { "zbirenbaum/copilot.lua" },
 		config = function()
 			require("user.plugins.config.copilot_cmp").setup()
 		end,

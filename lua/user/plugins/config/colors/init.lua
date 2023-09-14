@@ -1,9 +1,15 @@
 local Colors = {}
 
 function Colors.setup()
-  local google_light = require("user.plugins.config.colors.google-light")
+  local enabled = false
 
-  google_light.setup()
+  if not enabled then
+    return nil
+  end
+
+  local color = require("user.plugins.config.colors.schemes")
+
+  color.setup()
 end
 
 return Colors
