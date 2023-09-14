@@ -9,7 +9,7 @@ function M.setup()
 	-- Utilities for creating configurations
 	local util = require("formatter.util")
 
-	require("formatter").setup({
+	formatter.setup({
 		-- Enable or disable logging
 		logging = true,
 		-- Set the log level
@@ -19,21 +19,26 @@ function M.setup()
 				require("formatter.filetypes.go").gofmt,
 			},
 			javascript = {
-				require("formatter.filetypes.javascript").prettierd,
+				-- require("formatter.filetypes.javascript").prettierd,
+				require("formatter.filetypes.javascript").prettier,
 			},
 			typescript = {
-				require("formatter.filetypes.javascript").prettier,
+				require("formatter.filetypes.typescript").prettier,
 			},
 			-- other formatters ...
 			svelte = {
 				-- require("formatter.filetypes.svelte").prettier,
-				require("formatter.filetypes.javascript").prettierd,
+				-- require("formatter.filetypes.javascript").prettierd,
+				require("formatter.filetypes.javascript").prettier,
 			},
 			html = {
 				require("formatter.filetypes.html").prettier,
 			},
 			css = {
 				require("formatter.filetypes.css").prettier,
+			},
+			json = {
+				require("formatter.filetypes.json").fixjson,
 			},
 			lua = {
 				-- "formatter.filetypes.lua" defines default configurations for the
