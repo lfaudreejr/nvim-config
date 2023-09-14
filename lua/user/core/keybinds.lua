@@ -44,7 +44,7 @@ vim.keymap.set("n", "<leader>_", "<cmd>split<cr>", { desc = "Horizontal split" }
 vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
 vim.keymap.set("n", "<leader>q", "<cmd>confirm q<cr>", { desc = "Quit" })
 vim.keymap.set("n", "<leader>c", function()
-	require("utils").close_buffer_with_confirmation()
+	require("user.utils").close_buffer_with_confirmation()
 end, { desc = "Close buffer" })
 
 vim.keymap.set("n", "<C-s>", "<cmd>w!<cr>", { desc = "Force save" })

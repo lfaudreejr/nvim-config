@@ -77,7 +77,7 @@ return {
 			"DaikyXendo/nvim-material-icon",
 		},
 		config = function()
-			require("user.plugins.config.nvim-tree").setup()
+			require("user.plugins.config.nvim_tree").setup()
 		end,
 	},
 	{
@@ -344,16 +344,18 @@ return {
 	{
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
-		event = "InsertEnter",
+		-- event = "InsertEnter",
+    event = "BufEnter",
 		config = function()
 			require("user.plugins.config.copilot").setup()
 		end,
 	},
 	{
 		"zbirenbaum/copilot-cmp",
-		event = "InsertEnter",
+		-- event = "InsertEnter",
+    dependencies = { "zbirenbaum/copilot.lua" },
 		config = function()
-			require("user.plugins.config.copilot-cmp").setup()
+			require("user.plugins.config.copilot_cmp").setup()
 		end,
 	},
 	-- add this to your lua/plugins.lua, lua/plugins/init.lua,  or the file you keep your other plugins:
