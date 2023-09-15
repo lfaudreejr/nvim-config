@@ -341,6 +341,9 @@ theme.set_highlights = function()
   hl(0, "CmpItemKindReference", { fg = c.fg, bg = 'NONE' })
   hl(0, "CmpItemKindOperator", { fg = c.fg, bg = 'NONE' })
   hl(0, "CmpItemKindTypeParameter", { fg = c.red, bg = 'NONE' })
+  
+  -- Javascript
+  hl(0, "@variable.builtin.javascript", { fg = "#06b6d4" })
   -- Typescript
   hl(0, '@lsp.typemod.variable.readonly.typescript', { fg = c.vivid_blue })
   hl(0, '@lsp.type.parameter.typescript', { fg = c.alt_fg })
