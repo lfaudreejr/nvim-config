@@ -1,26 +1,31 @@
 local colors = {
-  bg = "#353a45",
-  fg = "#f6f7f9",
-  border = "#989898",
-  bg_2 = "#454e5f",
-  fg_2 = "#edeef1",
-  cursor_bg = "#515052",
-  cursor_fg = "#d6dae1",
-  accent = "#d6dae1",
+
+  bg = "#374151",
+  bg_dark = "#111827",
+  bg_light = "#6b7280",
+
+  cursor_line_bg = "#4b5563",
+
+  fg = "#e5e7eb",
+  fg_dark = "#d1d5db",
+  fg_light = "#f3f4f6",
+
+  cursor_bg = "#030712",
+  cursor_fg = "#f9fafb",
+
   white = "#fafafa",
-  gray = "#b2b9c7",
-  blue = "#38bdf8",
-  green = "#059669",
-  cyan = "#22d3ee",
-  red = "#fb7185",
-  orange = "#fb923c",
-  yellow = "#facc15",
-  purple = "#c084fc",
-  magenta = "#e879f9",
+  blue = "#93c5fd",
+  green = "#bbf7d0",
+  cyan = "#67e8f9",
+  red = "#fda4af",
+  orange = "#fdba74",
+  yellow = "#fde047",
+  purple = "#d8b4fe",
+  magenta = "#f0abfc",
   light_blue = "#7dd3fc",
   search_blue = "#1e3a8a",
   search_orange = "#9a3412",
-  visual_bg = "#eab308",
+  visual_bg = "#8894a8",
   sign_add = "#587c0c",
   sign_change = "#0c7d9d",
   sign_delete = "#94151b",
@@ -29,7 +34,7 @@ local colors = {
   warning_orange = "#ff8800",
   error_red = "#F44747",
   tree_gray = "#111827",
-  info_yellow = "#FFCC66",
+  info_yellow = "#D19A66",
   hint_blue = "#0ea5e9",
   success_green = "#14C50B",
   folder_blue = "#0891b2",
@@ -41,7 +46,7 @@ local colors = {
   ui4_blue = "#75BEFF",
   ui_orange = "#E8AB53",
   ui_purple = "#B180D7",
-  dark_blue = "#0ea5e9"
+  dark_blue = "#60a5fa"
 }
 
 return colors
