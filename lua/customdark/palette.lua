@@ -46,7 +46,8 @@ local colors = {
   ui4_blue = "#75BEFF",
   ui_orange = "#E8AB53",
   ui_purple = "#B180D7",
-  dark_blue = "#60a5fa"
+  dark_blue = "#60a5fa",
+  return_red = "#fb7185"
 }
 
 return colors
