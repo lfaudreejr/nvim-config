@@ -66,6 +66,9 @@ function M.setup()
 					}
 				end,
 			},
+      toml = {
+        require('formatter.filetypes.toml').taplo
+      }
 		},
 	})
 end

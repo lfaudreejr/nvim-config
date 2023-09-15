@@ -11,7 +11,7 @@ return {
 	{ "yamatsum/nvim-nonicons", config = true, enabled = false },
 	{
 		"navarasu/onedark.nvim",
-    enabled = true,
+		enabled = false,
 		config = function()
 			local onedark = require("onedark")
 			onedark.setup({ style = "dark" })
@@ -375,7 +375,16 @@ return {
 		},
 		lazy = false,
 	},
-
+	{
+		"norcalli/nvim-colorizer.lua",
+    event = "VeryLazy",
+		opts = { "css", "html", "javascript", "lua", "toml" },
+	},
+	{
+		"pmizio/typescript-tools.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		-- opts = {},
+	},
 	-- Clojure only
 	{
 		"tpope/vim-dispatch",
