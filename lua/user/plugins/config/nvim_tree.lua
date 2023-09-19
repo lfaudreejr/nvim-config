@@ -12,6 +12,16 @@ function M.setup()
 		},
 		renderer = {
 			group_empty = true,
+      indent_width = 1,
+      indent_markers = {
+        enable = false
+      },
+      icons = {
+        show = {
+          folder_arrow = false
+        }
+      },
+      highlight_opened_files = "name",
 		},
 		filters = {
 			dotfiles = true,
