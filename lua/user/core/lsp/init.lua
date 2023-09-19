@@ -22,7 +22,10 @@ function P.setup()
 
 	-- (Optional) Configure lua language server for neovim
 	require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
-  require('typescript-tools').setup({})
+
+	lsp.skip_server_setup({ "tsserver" })
+
+	require("typescript-tools").setup({})
 
 	lsp.setup()
 
