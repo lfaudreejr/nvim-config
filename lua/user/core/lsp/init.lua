@@ -13,7 +13,9 @@ function P.setup()
 	lsp.on_attach(function(client, bufnr)
 		-- see :help lsp-zero-keybindings
 		-- to learn the available actions
-		lsp.default_keymaps({ buffer = bufnr, preserve_mappings = false })
+    lsp.default_keymaps({ buffer = bufnr, exclude = { "K" } })
+
+    vim.keymap.set('n', '<leader>k', '<cmd>lua vim.lsp.buf.hover()<cr>')
 
 		if navic_ok and client.server_capabilities.documentSymbolProvider then
 			navic.attach(client, bufnr)

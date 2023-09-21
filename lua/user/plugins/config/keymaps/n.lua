@@ -51,19 +51,19 @@ return {
 		w = { "<cmd>FormatWrite<CR>", "Format Write" },
 	},
 
-	g = {
-		name = "+git",
-		s = { "<cmd>Neogit kind=floating<CR>", "Status" },
-	},
-
-	p = {
-		name = "+plugins",
+	l = {
+		name = "+lazy",
 		m = {
 			function()
 				require("lazy").home()
 			end,
 			"Manager",
 		},
+	},
+
+	g = {
+		name = "+git",
+		s = { "<cmd>Neogit kind=floating<CR>", "Status" },
 	},
 
 	s = {
@@ -135,9 +135,9 @@ return {
 	},
 
 	t = {
-		name = "+toggle",
-		e = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
-    f = { "<cmd>NvimTreeFocus<CR>", "Focus Explorer"}
+		name = "+tree",
+		t = { "<cmd>NvimTreeToggle<CR>", "Toggle" },
+		f = { "<cmd>NvimTreeFocus<CR>", "Focus" },
 	},
 
 	z = {
@@ -155,5 +155,4 @@ return {
 			"Close All",
 		},
 	},
-
 }
