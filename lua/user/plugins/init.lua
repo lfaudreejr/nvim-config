@@ -81,6 +81,7 @@ return {
 	},
 	{
 		"DaikyXendo/nvim-tree.lua",
+    enabled = false,
 		lazy = false,
 		dependencies = {
 			"DaikyXendo/nvim-material-icon",

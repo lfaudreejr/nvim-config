@@ -5,6 +5,9 @@ function M.setup()
 	if not status_ok then
 		return nil
 	end
+	-- disable netrw at the very start of your init.lua
+	--vim.g.loaded_netrw = 1
+	--vim.g.loaded_netrwPlugin = 1
 
 	nvimtree.setup({
 		view = {
@@ -12,16 +15,16 @@ function M.setup()
 		},
 		renderer = {
 			group_empty = true,
-      indent_width = 1,
-      indent_markers = {
-        enable = false
-      },
-      icons = {
-        show = {
-          folder_arrow = false
-        }
-      },
-      highlight_opened_files = "name",
+			indent_width = 1,
+			indent_markers = {
+				enable = false,
+			},
+			icons = {
+				show = {
+					folder_arrow = false,
+				},
+			},
+			highlight_opened_files = "name",
 		},
 		filters = {
 			dotfiles = true,
