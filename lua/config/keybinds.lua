@@ -54,4 +54,4 @@ vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Resize
 vim.keymap.set("n", "<PageUp>", "<C-u>")
 vim.keymap.set("n", "<PageDown>", "<C-d>")
 
-vim.keymap.set("n", "<leader>te", vim.cmd.Ex)
+--vim.keymap.set("n", "<leader>te", vim.cmd.Ex)

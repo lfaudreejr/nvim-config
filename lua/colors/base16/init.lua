@@ -7,7 +7,7 @@ function Colors.setup()
     return nil
   end
 
-  local color = require("user.plugins.config.colors.schemes")
+  local color = require("colors.base16.schemes")
 
   color.setup()
 end

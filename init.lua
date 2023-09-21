@@ -1,20 +1,19 @@
-local lazy = require("user.core.lazy")
-local plugins = require("user.plugins")
-local lsp = require("user.core.lsp")
-
-require("user.plugins.config.colors").setup()
-require("user.core.options")
-
-require("customdark").setup()
---require("customlight").setup()
+require("config.options")
+require("colors.customdark").setup()
+--require("colors.customlight").setup()
+--require("colors.base16").setup()
 
 vim.api.nvim_create_autocmd("User", {
 	pattern = "VeryLazy",
 	callback = function()
-		require("user.core.autocmds")
-		require("user.core.keybinds")
+		require("config.autocmds")
+		require("config.keybinds")
 	end,
 })
+
+local lazy = require("user.lazy")
+local plugins = require("user.plugins")
+local lsp = require("user.lsp")
 
 lazy.setup(plugins)
 lsp.setup()

@@ -159,7 +159,7 @@ Color.colorschemes["my-light"] = {
 }
 
 function Color.setup()
-	require("user.plugins.config.colors.maker").setup(Color.colorschemes[active_scheme])
+	require("colors.base16.maker").setup(Color.colorschemes[active_scheme])
 end
 
 return Color

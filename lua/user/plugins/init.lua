@@ -81,7 +81,7 @@ return {
 	},
 	{
 		"DaikyXendo/nvim-tree.lua",
-    enabled = false,
+		enabled = false,
 		lazy = false,
 		dependencies = {
 			"DaikyXendo/nvim-material-icon",
@@ -89,6 +89,18 @@ return {
 		config = function()
 			require("user.plugins.config.nvim_tree").setup()
 		end,
+	},
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+		},
+    config = function()
+      require("user.plugins.config.neo_tree").setup()
+    end
 	},
 	{
 		"nvim-telescope/telescope.nvim",

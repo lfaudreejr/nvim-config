@@ -1,16 +1,16 @@
 local M = {}
-local theme = require('customdark.theme')
+local theme = require('colors.customlight.theme')
 
 M.setup = function()
   vim.cmd('hi clear')
 
-  vim.o.background = 'dark'
+  vim.o.background = 'light'
   if vim.fn.exists('syntax_on') then
     vim.cmd('syntax reset')
   end
 
   vim.o.termguicolors = true
-  vim.g.colors_name = 'customdark'
+  vim.g.colors_name = 'customlight'
 
   theme.set_highlights()
 end
