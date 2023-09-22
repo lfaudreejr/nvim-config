@@ -12,8 +12,7 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 local lazy = require("user.lazy")
-local plugins = require("user.plugins")
 local lsp = require("user.lsp")
 
-lazy.setup(plugins)
+lazy.setup()
 lsp.setup()

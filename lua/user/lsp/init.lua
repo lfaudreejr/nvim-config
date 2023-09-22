@@ -31,7 +31,7 @@ function P.setup()
 
 	lsp.setup()
 
-	require("user.plugins.config.cmp").setup()
+	require("user.lsp.cmp").setup()
 end
 
 return P

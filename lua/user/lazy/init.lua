@@ -35,12 +35,12 @@ function lazy.install(path)
 	end
 end
 
-function lazy.setup(plugins)
+function lazy.setup()
 	-- You can "comment out" the line below after lazy.nvim is installed
 	lazy.install(lazy.path)
 
 	vim.opt.rtp:prepend(lazy.path)
-	require("lazy").setup(plugins, lazy.opts)
+	require("lazy").setup("plugins", lazy.opts)
 end
 
 return lazy
