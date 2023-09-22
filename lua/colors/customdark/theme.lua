@@ -341,7 +341,9 @@ theme.set_highlights = function()
   hl(0, "CmpItemKindReference", { fg = c.fg, bg = 'NONE' })
   hl(0, "CmpItemKindOperator", { fg = c.fg, bg = 'NONE' })
   hl(0, "CmpItemKindTypeParameter", { fg = c.red, bg = 'NONE' })
-  
+
+  -- Notify
+  hl(0, "NotifyBackground", { fg = c.fg, bg = c.bg })
   -- Javascript
   hl(0, "@variable.builtin.javascript", { fg = "#06b6d4" })
   -- Typescript
