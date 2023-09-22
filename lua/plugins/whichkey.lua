@@ -160,7 +160,7 @@ return {
 				name = "+tree",
 				-- t = { "<cmd>NvimTreeToggle<CR>", "Toggle" },
 				-- f = { "<cmd>NvimTreeFocus<CR>", "Focus" },
-				t = { "<cmd>Neotree<CR>", "Toggle" },
+				t = { "<cmd>Neotree %:p:h<CR>", "Toggle" },
 			},
 
 			z = {

@@ -163,6 +163,16 @@ return {
 					["<"] = "prev_source",
 					[">"] = "next_source",
 					["i"] = "show_file_details",
+
+					["e"] = function()
+						vim.api.nvim_exec("Neotree focus filesystem current", true)
+					end,
+					["b"] = function()
+						vim.api.nvim_exec("Neotree focus buffers current", true)
+					end,
+					["g"] = function()
+						vim.api.nvim_exec("Neotree focus git_status current", true)
+					end,
 				},
 			},
 			nesting_rules = {},
@@ -191,7 +201,7 @@ return {
 					},
 				},
 				follow_current_file = {
-					enabled = false, -- This will find and focus the file in the active buffer every time
+					enabled = true, -- This will find and focus the file in the active buffer every time
 					--               -- the current file is changed while the tree is open.
 					leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
 				},
