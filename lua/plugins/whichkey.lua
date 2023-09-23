@@ -21,11 +21,17 @@ return {
 		})
 
 		local n_keys = {
-			["w"] = { "<cmd>update!<CR>", "Save" },
-			["q"] = { "<cmd>q!<Cr>", "Quit" },
+			["w"] = { "<cmd>w<CR>", "Save" },
+			["q"] = { "<cmd>confirm q<Cr>", "Quit" },
 
 			b = {
 				name = "+buffer",
+				c = {
+					function()
+						require("user.utils").close_buffer_with_confirmation()
+					end,
+					"Close",
+				},
 				d = {
 					function()
 						require("mini.bufremove").delete(0, false)
@@ -88,30 +94,13 @@ return {
 				s = { "<cmd>Neogit kind=floating<CR>", "Status" },
 			},
 
-			s = {
-				name = "+session",
-				r = {
-					function()
-						require("persistence").load()
-					end,
-					"Restore Session",
-				},
-				l = {
-					function()
-						require("persistence").load({ last = true })
-					end,
-					"Restore Last Session",
-				},
-				D = {
-					function()
-						require("persistence").stop()
-					end,
-					"Don't Save Current Session",
-				},
-			},
-
 			p = {
 				name = "+project",
+				v = { "<cmd>Neotree %:p:h<CR>", "Viewer" },
+			},
+
+			s = {
+				name = "+search",
 				b = {
 					function()
 						require("telescope.builtin").buffers()
@@ -124,11 +113,17 @@ return {
 					end,
 					"Diagnostics",
 				},
-				g = {
+				l = {
 					function()
 						require("telescope.builtin").live_grep()
 					end,
-					"via Grep",
+					"Live Grep",
+				},
+				g = {
+					function()
+						require("telescope.builtin").git_files()
+					end,
+					"Git Files",
 				},
 				h = {
 					function()
@@ -154,7 +149,28 @@ return {
 					end,
 					"Files",
 				},
-				v = { "<cmd>Neotree %:p:h<CR>", "Files" },
+			},
+
+			S = {
+				name = "+session",
+				r = {
+					function()
+						require("persistence").load()
+					end,
+					"Restore Session",
+				},
+				l = {
+					function()
+						require("persistence").load({ last = true })
+					end,
+					"Restore Last Session",
+				},
+				D = {
+					function()
+						require("persistence").stop()
+					end,
+					"Don't Save Current Session",
+				},
 			},
 
 			z = {
