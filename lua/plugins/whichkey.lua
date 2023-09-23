@@ -96,7 +96,7 @@ return {
 
 			p = {
 				name = "+project",
-				v = { "<cmd>Neotree %:p:h<CR>", "Viewer" },
+				e = { "<cmd>Neotree %:p:h<CR>", "Explorer" },
 			},
 
 			s = {
