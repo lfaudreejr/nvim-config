@@ -247,7 +247,7 @@ theme.set_highlights = function()
   hl(0, "LspCodeLens", { fg = c.context, bg = 'NONE', italic=true, })
   hl(0, "LspCodeLensSeparator", { fg = c.context, bg = 'NONE', italic=true, })
 
-  -- Telescope
+  -- Tielescope
   hl(0, "TelescopeSelection", { fg = c.hint_blue, bg = 'NONE' })
   hl(0, "TelescopeMatching", { fg = c.info_yellow, bg = 'NONE', bold=true, })
   hl(0, "TelescopeBorder", { fg = c.blue, bg = c.bg })

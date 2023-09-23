@@ -29,8 +29,8 @@ vim.keymap.set("n", "<S-Down>", "<cmd>resize -2<CR>")
 vim.keymap.set("n", "<S-Left>", "<cmd>vertical resize -2<CR>")
 vim.keymap.set("n", "<S-Right>", "<cmd>vertical resize +2<CR>")
 
-vim.keymap.set("n", "<leader>|", "<cmd>vsplit<cr>", { desc = "Vertical split" })
-vim.keymap.set("n", "<leader>_", "<cmd>split<cr>", { desc = "Horizontal split" })
+vim.keymap.set("n", "<C-\\>", "<cmd>vsplit<cr>", { desc = "Vertical split" })
+vim.keymap.set("n", "<C-_>", "<cmd>split<cr>", { desc = "Horizontal split" })
 
 vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
 vim.keymap.set("n", "<leader>q", "<cmd>confirm q<cr>", { desc = "Quit" })
@@ -45,13 +45,12 @@ vim.keymap.set("n", "<C-q>", "<cmd>qa!<cr>", { desc = "Force quit" })
 -- vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to below split" })
 -- vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to above split" })
 -- vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right split" })
-vim.keymap.set("n", "<C-Up>", "<cmd>resize -2<CR>", { desc = "Resize split up" })
-vim.keymap.set("n", "<C-Down>", "<cmd>resize +2<CR>", { desc = "Resize split down" })
-vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize +2<CR>", { desc = "Resize split left" })
-vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Resize split right" })
 
 -- buffer navigation
 vim.keymap.set("n", "<PageUp>", "<C-u>")
 vim.keymap.set("n", "<PageDown>", "<C-d>")
 
 --vim.keymap.set("n", "<leader>te", vim.cmd.Ex)
+vim.keymap.set("n", "<C-p>", function()
+	require("telescope.builtin").git_files()
+end, { desc = "Git Files" })

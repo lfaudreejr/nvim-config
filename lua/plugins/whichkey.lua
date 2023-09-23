@@ -89,52 +89,6 @@ return {
 			},
 
 			s = {
-				name = "+search",
-				b = {
-					function()
-						require("telescope.builtin").buffers()
-					end,
-					"Buffers",
-				},
-				d = {
-					function()
-						require("telescope.builtin").diagnostics()
-					end,
-					"Diagnostics",
-				},
-				f = {
-					function()
-						require("telescope.builtin").find_files()
-					end,
-					"Files",
-				},
-				g = {
-					function()
-						require("telescope.builtin").live_grep()
-					end,
-					"via Grep",
-				},
-				h = {
-					function()
-						require("telescope.builtin").help_tags()
-					end,
-					"Help",
-				},
-				r = {
-					function()
-						require("telescope.builtin").resume()
-					end,
-					"Resume",
-				},
-				w = {
-					function()
-						require("telescope.builtin").grep_string()
-					end,
-					"Current Word",
-				},
-			},
-
-			S = {
 				name = "+session",
 				r = {
 					function()
@@ -156,11 +110,51 @@ return {
 				},
 			},
 
-			t = {
-				name = "+tree",
-				-- t = { "<cmd>NvimTreeToggle<CR>", "Toggle" },
-				-- f = { "<cmd>NvimTreeFocus<CR>", "Focus" },
-				t = { "<cmd>Neotree %:p:h<CR>", "Toggle" },
+			p = {
+				name = "+project",
+				b = {
+					function()
+						require("telescope.builtin").buffers()
+					end,
+					"Buffers",
+				},
+				d = {
+					function()
+						require("telescope.builtin").diagnostics()
+					end,
+					"Diagnostics",
+				},
+				g = {
+					function()
+						require("telescope.builtin").live_grep()
+					end,
+					"via Grep",
+				},
+				h = {
+					function()
+						require("telescope.builtin").help_tags()
+					end,
+					"Help",
+				},
+				r = {
+					function()
+						require("telescope.builtin").resume()
+					end,
+					"Resume",
+				},
+				s = {
+					function()
+						require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
+					end,
+					"Current Word",
+				},
+				f = {
+					function()
+						require("telescope.builtin").find_files()
+					end,
+					"Files",
+				},
+				v = { "<cmd>Neotree %:p:h<CR>", "Files" },
 			},
 
 			z = {
