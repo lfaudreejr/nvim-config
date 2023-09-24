@@ -45,3 +45,8 @@ vim.keymap.set("n", "<PageUp>", "<C-u>")
 vim.keymap.set("n", "<PageDown>", "<C-d>")
 
 --vim.keymap.set("n", "<leader>te", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
