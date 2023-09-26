@@ -96,7 +96,7 @@ return {
 
 			p = {
 				name = "+project",
-				e = { "<cmd>Neotree %:p:h<CR>", "Explorer" },
+				e = { "<cmd>Neotree reveal<CR>", "Explorer" },
 			},
 
 			s = {
@@ -137,7 +137,7 @@ return {
 					end,
 					"Resume",
 				},
-				s = {
+				w = {
 					function()
 						require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
 					end,
