@@ -1,9 +1,10 @@
 return {
 	{
 		"lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
 		event = "BufEnter",
 		config = function()
-			local blankline = require("indent_blankline")
+			local blankline = require("ibl")
 
 			blankline.setup({
 				buftype_exclude = {
