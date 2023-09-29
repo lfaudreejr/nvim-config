@@ -13,7 +13,7 @@ function P.setup()
 	lsp.on_attach(function(client, bufnr)
 		-- see :help lsp-zero-keybindings
 		-- to learn the available actions
-    lsp.default_keymaps({ buffer = bufnr, exclude = { "K" } })
+    lsp.default_keymaps({ buffer = bufnr, preserve_mappings = false, omit = { "K" } })
 
     vim.keymap.set('n', '<leader>k', '<cmd>lua vim.lsp.buf.hover()<cr>')
 
