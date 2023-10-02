@@ -346,6 +346,7 @@ theme.set_highlights = function()
   hl(0, "NotifyBackground", { fg = c.fg, bg = c.bg })
   -- Javascript
   hl(0, "@variable.builtin.javascript", { fg = "#06b6d4" })
+  hl(0, "@property.javascript", { fg = c.purple })
   -- Typescript
   hl(0, '@lsp.typemod.variable.readonly.typescript', { fg = c.vivid_blue })
   hl(0, '@lsp.type.parameter.typescript', { fg = c.alt_fg })
