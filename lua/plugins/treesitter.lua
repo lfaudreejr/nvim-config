@@ -5,6 +5,7 @@ return {
 			{ "nvim-treesitter/nvim-treesitter-textobjects", pin = true },
 			{ "nvim-treesitter/nvim-treesitter-context" },
 			{ "JoosepAlviste/nvim-ts-context-commentstring" },
+      { "windwp/nvim-ts-autotag" },
 		},
 		event = "BufReadPost",
 		cmd = {
