@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 -- Set highlight on search
 vim.o.hlsearch = false
 vim.o.incsearch = true
@@ -15,8 +17,6 @@ vim.o.foldenable = true
 
 -- Enable break indent
 vim.o.breakindent = true
-vim.g.mapleader = " "
-vim.g.maplocalleader = ","
 
 local opt = vim.opt
 
