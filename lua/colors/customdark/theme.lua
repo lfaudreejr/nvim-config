@@ -357,6 +357,7 @@ theme.set_highlights = function()
   hl(0, '@tag.attribute.svelte', { fg = c.blue })
   -- Go
   hl(0, '@keyword.return.go', { fg = c.return_red })
+  hl(0, '@property.go', { fg = c.purple })
 end
 
 return theme
