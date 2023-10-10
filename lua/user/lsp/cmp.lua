@@ -59,25 +59,28 @@ function CMP.setup()
 		},
 		sources = {
 			{
+				name = "path",
+			},
+			{
 				name = "copilot",
 			},
 			{
 				name = "conjure",
 			},
 			{
+				name = "nvim_lsp",
+				keyword_length = 1,
+			},
+			{
 				name = "nvim_lsp_signature_help",
 			},
 			{
-				name = "nvim_lsp",
+				name = "buffer",
+				keyword_length = 3,
 			},
 			{
 				name = "luasnip",
-			},
-			{
-				name = "buffer",
-			},
-			{
-				name = "path",
+        keyword_length = 2,
 			},
 		},
 		mapping = {
