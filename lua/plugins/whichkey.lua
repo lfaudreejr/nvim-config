@@ -96,6 +96,19 @@ return {
 
 			p = {
 				name = "+project",
+				c = {
+					name = "+color",
+					t = {
+						function()
+							if vim.o.background == "dark" then
+								require("colors.customlight").setup()
+							else
+								require("colors.customdark").setup()
+							end
+						end,
+						"Toggle",
+					},
+				},
 				e = { "<cmd>Neotree reveal<CR>", "Explorer" },
 			},
 

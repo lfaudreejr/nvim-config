@@ -1,5 +1,6 @@
 return {
 	"xiyaowong/transparent.nvim",
+  enabled = false,
 	opts = {
 		groups = { -- table: default groups
 			"Normal",
