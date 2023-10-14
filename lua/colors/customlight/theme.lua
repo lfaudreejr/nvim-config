@@ -348,6 +348,9 @@ theme.set_highlights = function()
   hl(0, '@lsp.type.class.typescript', { fg = c.yellow })
   -- Svelte
   hl(0, '@tag.attribute.svelte', { fg = c.cyan })
+  -- Go
+  hl(0, '@keyword.return.go', { fg = c.red })
+  hl(0, '@property.go', { fg = c.purple })
 end
 
 return theme

@@ -13,4 +13,14 @@ return {
 			onedark.load()
 		end,
 	},
+	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+    enabled = true,
+		config = function()
+      vim.o.background = "light"
+      require("rose-pine").setup {}
+      vim.cmd('colorscheme rose-pine')
+		end,
+	},
 }

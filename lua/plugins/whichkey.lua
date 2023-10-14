@@ -186,6 +186,19 @@ return {
 				},
 			},
 
+			v = {
+				name = "vim",
+				c = {
+					name = "code",
+					a = "action",
+				},
+				r = {
+					name = "references",
+					r = "list",
+					n = "rename",
+				},
+			},
+
 			z = {
 				name = "+fold",
 				R = {

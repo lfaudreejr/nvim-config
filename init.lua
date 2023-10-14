@@ -1,5 +1,5 @@
 require("config.options")
-require("colors.customdark").setup()
+--require("colors.customdark").setup()
 --require("colors.customlight").setup()
 --require("colors.base16").setup()
 

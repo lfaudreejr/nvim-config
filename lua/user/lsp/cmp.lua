@@ -12,7 +12,9 @@ function CMP.setup()
 	local has_neogen, neogen = pcall(require, "neogen")
 
 	local has_words_before = function()
-		if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+      -- was vim.api.nvim_buf_get_option
+			-- if vim.api.nvim_buf_get_option_value(0, "buftype") == "prompt" then
+    if vim.api.nvim_get_option_value("buftype", {buf = 0}) == "prompt" then
 			return false
 		end
 		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -59,9 +61,6 @@ function CMP.setup()
 		},
 		sources = {
 			{
-				name = "path",
-			},
-			{
 				name = "copilot",
 			},
 			{
@@ -72,22 +71,25 @@ function CMP.setup()
 				keyword_length = 1,
 			},
 			{
-				name = "nvim_lsp_signature_help",
-			},
-			{
 				name = "buffer",
 				keyword_length = 3,
 			},
 			{
+				name = "path",
+			},
+			{
+				name = "nvim_lsp_signature_help",
+			},
+			{
 				name = "luasnip",
-        keyword_length = 2,
+				keyword_length = 2,
 			},
 		},
 		mapping = {
 			["<C-Space>"] = cmp.mapping.complete(),
 			["<C-f>"] = cmp.mapping.scroll_docs(-4),
 			["<C-b>"] = cmp.mapping.scroll_docs(4),
-			["<CR>"] = cmp.mapping.confirm({
+			["<C-y>"] = cmp.mapping.confirm({
 				-- documentation says this is important.
 				-- I don't know why.
 				behavior = cmp.ConfirmBehavior.Replace,
