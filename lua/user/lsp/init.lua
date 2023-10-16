@@ -20,10 +20,10 @@ function P.setup()
 			vim.lsp.buf.definition()
 		end, opts)
 		vim.keymap.set("n", "<leader>k", "<cmd>lua vim.lsp.buf.hover()<cr>")
-		vim.keymap.set("n", "<leader>vws", function()
+		vim.keymap.set("n", "<leader>cws", function()
 			vim.lsp.buf.workspace_symbol()
 		end, opts)
-		vim.keymap.set("n", "<leader>vd", function()
+		vim.keymap.set("n", "<leader>cd", function()
 			vim.diagnostic.open_float()
 		end, opts)
 		vim.keymap.set("n", "[d", function()
@@ -32,13 +32,13 @@ function P.setup()
 		vim.keymap.set("n", "]d", function()
 			vim.diagnostic.goto_prev()
 		end, opts)
-		vim.keymap.set("n", "<leader>vca", function()
+		vim.keymap.set("n", "<leader>cca", function()
 			vim.lsp.buf.code_action()
 		end, opts)
-		vim.keymap.set("n", "<leader>vrr", function()
+		vim.keymap.set("n", "<leader>crr", function()
 			vim.lsp.buf.references()
 		end, opts)
-		vim.keymap.set("n", "<leader>vrn", function()
+		vim.keymap.set("n", "<leader>crn", function()
 			vim.lsp.buf.rename()
 		end, opts)
 		vim.keymap.set("i", "<C-h>", function()
@@ -51,11 +51,33 @@ function P.setup()
 	end)
 
 	-- (Optional) Configure lua language server for neovim
-	require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
+	-- require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 
-	lsp.skip_server_setup({ "tsserver" })
+	-- lsp.skip_server_setup({ "tsserver" })
 
-	lsp.setup()
+	require("mason").setup({})
+	require("mason-lspconfig").setup({
+		ensure_installed = {
+			"lua_ls",
+			"rust_analyzer",
+			"gopls",
+			"clojure_lsp",
+			"jsonls",
+			"tailwindcss",
+			"svelte",
+		},
+		automatic_installation = { exclude = { "tsserver" } },
+		handlers = {
+			lsp.default_setup,
+			lua_ls = function()
+				-- (Optional) configure lua language server
+				local lua_opts = lsp.nvim_lua_ls()
+				require("lspconfig").lua_ls.setup(lua_opts)
+			end,
+		},
+	})
+
+	-- lsp.setup()
 
 	require("typescript-tools").setup({})
 

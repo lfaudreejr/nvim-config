@@ -46,9 +46,18 @@ return {
 				},
 			},
 
-			c = {
-				name = "+code",
-				f = { "<cmd>Format<CR>", "Format" },
+			l = {
+				name = "+lsp",
+				c = {
+					name = "code",
+					a = "action",
+				},
+				d = "open diagnostics",
+				f = {
+					name = "format",
+					f = { "<cmd>Format<CR>", "Format" },
+					w = { "<cmd>FormatWrite<CR>", "Format Write" },
+				},
 				g = {
 					name = "+gen",
 					c = {
@@ -76,16 +85,14 @@ return {
 						"Type",
 					},
 				},
-				w = { "<cmd>FormatWrite<CR>", "Format Write" },
-			},
-
-			l = {
-				name = "+lazy",
-				m = {
-					function()
-						require("lazy").home()
-					end,
-					"Manager",
+				r = {
+					name = "references",
+					r = "list",
+					n = "rename",
+				},
+				w = {
+					"workspace",
+					s = "symbols",
 				},
 			},
 
@@ -110,6 +117,12 @@ return {
 					},
 				},
 				e = { "<cmd>Neotree reveal<CR>", "Explorer" },
+				m = {
+					function()
+						require("lazy").home()
+					end,
+					"Manager",
+				},
 			},
 
 			s = {
@@ -183,19 +196,6 @@ return {
 						require("persistence").stop()
 					end,
 					"Don't Save Current Session",
-				},
-			},
-
-			v = {
-				name = "vim",
-				c = {
-					name = "code",
-					a = "action",
-				},
-				r = {
-					name = "references",
-					r = "list",
-					n = "rename",
 				},
 			},
 
