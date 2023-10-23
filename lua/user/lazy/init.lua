@@ -40,6 +40,9 @@ function lazy.setup()
 	lazy.install(lazy.path)
 
 	vim.opt.rtp:prepend(lazy.path)
+  require("colors.customdark").setup()
+  --require("colors.customlight").setup()
+  --require("colors.base16").setup()
 	require("lazy").setup("plugins", lazy.opts)
 end
 

@@ -1,7 +1,4 @@
 require("config.options")
---require("colors.customdark").setup()
---require("colors.customlight").setup()
---require("colors.base16").setup()
 
 vim.api.nvim_create_autocmd("User", {
 	pattern = "VeryLazy",

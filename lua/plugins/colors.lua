@@ -16,7 +16,7 @@ return {
 	{
 		"rose-pine/neovim",
 		name = "rose-pine",
-    enabled = true,
+    enabled = false,
 		config = function()
       vim.o.background = "light"
       require("rose-pine").setup {}

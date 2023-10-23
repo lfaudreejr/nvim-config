@@ -12,9 +12,9 @@ function CMP.setup()
 	local has_neogen, neogen = pcall(require, "neogen")
 
 	local has_words_before = function()
-      -- was vim.api.nvim_buf_get_option
-			-- if vim.api.nvim_buf_get_option_value(0, "buftype") == "prompt" then
-    if vim.api.nvim_get_option_value("buftype", {buf = 0}) == "prompt" then
+		-- was vim.api.nvim_buf_get_option
+		-- if vim.api.nvim_buf_get_option_value(0, "buftype") == "prompt" then
+		if vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "prompt" then
 			return false
 		end
 		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -59,7 +59,18 @@ function CMP.setup()
 				end
 			end,
 		},
-		sources = {
+		sources = cmp.config.sources({
+			{
+				name = "nvim_lua",
+			},
+			{
+				name = "nvim_lsp",
+				keyword_length = 1,
+			},
+			{
+				name = "luasnip",
+				keyword_length = 2,
+			},
 			{
 				name = "copilot",
 			},
@@ -67,24 +78,17 @@ function CMP.setup()
 				name = "conjure",
 			},
 			{
-				name = "nvim_lsp",
-				keyword_length = 1,
+				name = "nvim_lsp_signature_help",
+			},
+		}, {
+			{
+				name = "path",
 			},
 			{
 				name = "buffer",
 				keyword_length = 3,
 			},
-			{
-				name = "path",
-			},
-			{
-				name = "nvim_lsp_signature_help",
-			},
-			{
-				name = "luasnip",
-				keyword_length = 2,
-			},
-		},
+		}),
 		mapping = {
 			["<C-Space>"] = cmp.mapping.complete(),
 			["<C-f>"] = cmp.mapping.scroll_docs(-4),
