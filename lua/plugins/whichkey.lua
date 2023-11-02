@@ -99,6 +99,7 @@ return {
 			g = {
 				name = "+git",
 				s = { "<cmd>Neogit kind=floating<CR>", "Status" },
+        z = { "<cmd>lua require('user.utils.terminal').git_client_toggle()<CR>", "Git TUI" },
 			},
 
 			p = {
