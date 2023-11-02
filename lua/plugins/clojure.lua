@@ -22,6 +22,7 @@ return {
 			},
 		},
 		config = function()
+      vim.g["conjure#mapping#doc_word"] = ""
 			require("conjure.main").main()
 			require("conjure.mapping")["on-filetype"]()
 		end,

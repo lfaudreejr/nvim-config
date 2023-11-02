@@ -13,3 +13,9 @@ local lsp = require("user.lsp")
 
 lazy.setup()
 lsp.setup()
+
+if vim.g.colors_name == nil then
+	require("colors.customdark").setup()
+else
+	vim.notify(vim.g.colors_name, 3)
+end
