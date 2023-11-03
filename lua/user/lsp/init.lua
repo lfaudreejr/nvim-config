@@ -45,7 +45,7 @@ function P.setup()
 			vim.lsp.buf.signature_help()
 		end, opts)
 
-		if navic_ok and client.server_capabilities.documentSymbolProvider then
+		if navic_ok and client.server_capabilities["documentSymbolProvider"] then
 			navic.attach(client, bufnr)
 		end
 	end)
