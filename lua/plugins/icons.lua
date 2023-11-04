@@ -11,5 +11,5 @@ return {
       })
 		end,
 	},
-	{ "yamatsum/nvim-nonicons", config = true, enabled = false },
+	{ "yamatsum/nvim-nonicons", config = true, enabled = true },
 }

@@ -1,7 +1,8 @@
 return {
 	{
 		-- Autocompletion
-		"hrsh7th/nvim-cmp",
+		-- "hrsh7th/nvim-cmp",
+    "yioneko/nvim-cmp",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			-- Snippet Engine & its associated nvim-cmp source
