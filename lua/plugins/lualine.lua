@@ -3,23 +3,16 @@ return {
 	lazy = false,
 	dependencies = {
 		{ "nvim-tree/nvim-web-devicons", opt = true },
-		{ "yamatsum/nvim-nonicons" },
 	},
 	config = function()
 		local lualine = require("lualine")
-		local icons = require("nvim-nonicons")
 
 		local config = {
 			sections = {
 				lualine_a = { "mode" },
 				lualine_c = { "filename" },
 				lualine_x = { "encoding", "fileformat", "filetype" },
-				lualine_z = {
-					{
-						"branch",
-						icon = icons.get("git-branch"),
-					},
-				},
+				lualine_z = { "location" },
 			},
 		}
 
