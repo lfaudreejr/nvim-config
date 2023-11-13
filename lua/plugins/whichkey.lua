@@ -169,6 +169,16 @@ return {
 				name = "Git",
 				b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
 				c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+        h = {
+          name = "Hunk",
+          d = "Diff This",
+          p = "Preview Hunk",
+          r = "Reset Hunk",
+          R = "Reset Buffer",
+          s = "Stage Hunk",
+          S = "Stage Buffer",
+          u = "Undo Stage"
+        },
 				l = { "<cmd>lua require('user.utils.terminal').git_client_toggle()<CR>", "LazyGit" },
 				o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
 				s = { "<cmd>Neogit kind=floating<CR>", "Status" },
