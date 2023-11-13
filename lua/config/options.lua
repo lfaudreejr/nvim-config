@@ -64,6 +64,7 @@ opt.undofile = true
 opt.undolevels = 10000
 opt.updatetime = 200 -- Save swap file and trigger CursorHold
 opt.wildmode = "longest:full,full" -- Command-line completion mode
+opt.wildignore = {'**/node_modules/**', '**/vendor/**'} -- Filter these out when suggesting files in command mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = true -- Disable line wrap
 
