@@ -12,6 +12,7 @@ return {
 					json = { "fixjson" },
 					typescript = { { "prettierd", "prettier" } },
 					svelte = { { "prettierd", "prettier" } },
+          go = { "gofmt" },
 				},
 			})
 			vim.api.nvim_create_user_command("Format", function(args)

@@ -115,7 +115,7 @@ return {
 
 			l = {
 				name = "Lsp",
-				a = { name = "Code Action" },
+				a = "Code Action",
 				d = "Diagnostics",
 				f = {
 					name = "Format",
