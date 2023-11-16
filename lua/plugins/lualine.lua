@@ -11,7 +11,7 @@ return {
 			sections = {
 				lualine_a = { "mode" },
 				lualine_c = { "filename" },
-				lualine_x = { "encoding", "fileformat", "filetype" },
+				lualine_x = { "encoding", "filetype" },
 				lualine_z = { "location" },
 			},
 		}
