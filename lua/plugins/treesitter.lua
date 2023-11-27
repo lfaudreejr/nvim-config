@@ -5,7 +5,7 @@ return {
 			{ "nvim-treesitter/nvim-treesitter-textobjects", pin = true },
 			{ "nvim-treesitter/nvim-treesitter-context" },
 			{ "JoosepAlviste/nvim-ts-context-commentstring" },
-      { "windwp/nvim-ts-autotag" },
+			{ "windwp/nvim-ts-autotag" },
 		},
 		event = "BufReadPost",
 		cmd = {
@@ -29,7 +29,6 @@ return {
 
 			configs.setup({
 				autotag = { enable = true, enable_close_on_slash = false },
-				context_commentstring = { enable = true, enable_autocmd = false },
 				highlight = {
 					enable = true,
 					disable = function(_, bufnr)
@@ -114,6 +113,11 @@ return {
 					"clojure",
 					"go",
 				},
+			})
+
+			require("ts_context_commentstring").setup({
+				enable = true,
+				enable_autocmd = false,
 			})
 		end,
 	},
