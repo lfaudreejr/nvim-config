@@ -10,9 +10,30 @@ return {
 
 			-- Autocompletion
 			-- { "hrsh7th/nvim-cmp" }, -- Required
-      { "yioneko/nvim-cmp" },
+			{ "yioneko/nvim-cmp" },
 			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
 			{ "L3MON4D3/LuaSnip" }, -- Required
+
+			-- language things
+			{ "simrat39/rust-tools.nvim" },
+			-- {
+			-- 	"ray-x/lsp_signature.nvim",
+			-- 	event = "VeryLazy",
+			-- 	opts = {},
+			-- 	config = function(_, opts)
+			-- 		local lsp_signature = require("lsp_signature")
+			-- 		
+   --        lsp_signature.setup(opts)
+			--
+			-- 		vim.keymap.set({ "n" }, "<C-k>", function()
+			-- 			lsp_signature.toggle_float_win()
+			-- 		end, { silent = true, noremap = true, desc = "toggle signature" })
+			--
+			-- 		vim.keymap.set({ "n" }, "<Leader>k", function()
+			-- 			vim.lsp.buf.signature_help()
+			-- 		end, { silent = true, noremap = true, desc = "toggle signature" })
+			-- 	end,
+			-- },
 		},
 	},
 	{

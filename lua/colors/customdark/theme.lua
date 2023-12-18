@@ -358,6 +358,8 @@ theme.set_highlights = function()
   -- Go
   hl(0, '@keyword.return.go', { fg = c.return_red })
   hl(0, '@property.go', { fg = c.purple })
+  
+	hl(0, "DiagnosticFloatingError", { fg = c.fg, bg = 'NONE' })
 end
 
 return theme

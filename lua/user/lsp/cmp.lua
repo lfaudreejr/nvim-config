@@ -68,24 +68,21 @@ function CMP.setup()
 		},
 		sources = cmp.config.sources({
 			{
-				name = "nvim_lua",
-			},
-			{
 				name = "nvim_lsp",
 				keyword_length = 1,
 			},
 			{
+				name = "nvim_lsp_signature_help",
+			},
+			{
+				name = "nvim_lua",
+			},
+			{
 				name = "luasnip",
-				keyword_length = 2,
+				keyword_length = 3,
 			},
 			{
 				name = "copilot",
-			},
-			{
-				name = "conjure",
-			},
-			{
-				name = "nvim_lsp_signature_help",
 			},
 		}, {
 			{

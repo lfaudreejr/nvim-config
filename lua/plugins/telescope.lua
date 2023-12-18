@@ -3,7 +3,7 @@ return {
 		"nvim-telescope/telescope.nvim",
 		event = "VeryLazy",
 		tag = "0.1.2",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = { "nvim-lua/plenary.nvim", "luc-tielen/telescope_hoogle" },
 		config = function()
 			local telescope = require("telescope")
 
@@ -144,8 +144,10 @@ return {
 
 			telescope.setup(opts)
 
-			-- Enable telescope fzf native, if installed
+			-- Enable telescope extensions, if installed
 			pcall(require("telescope").load_extension, "fzf")
+			pcall(require("telescope").load_extension, "ht")
+			pcall(require("telescope").load_extension, "hoogle")
 		end,
 	},
 }
