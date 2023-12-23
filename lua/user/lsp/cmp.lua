@@ -22,6 +22,8 @@ function CMP.setup()
 	end
 
 	require("luasnip.loaders.from_vscode").lazy_load()
+	require("lsp-zero.cmp").extend()
+	local cmp_action = require("lsp-zero.cmp").action()
 
 	cmp.setup({
 		window = {
@@ -72,9 +74,6 @@ function CMP.setup()
 				keyword_length = 1,
 			},
 			{
-				name = "nvim_lsp_signature_help",
-			},
-			{
 				name = "nvim_lua",
 			},
 			{
@@ -95,8 +94,10 @@ function CMP.setup()
 		}),
 		mapping = {
 			["<C-Space>"] = cmp.mapping.complete(),
-			["<C-f>"] = cmp.mapping.scroll_docs(-4),
-			["<C-b>"] = cmp.mapping.scroll_docs(4),
+			-- ["<C-f>"] = cmp.mapping.scroll_docs(-4),
+			-- ["<C-b>"] = cmp.mapping.scroll_docs(4),
+			["<C-f>"] = cmp_action.luasnip_jump_forward(),
+			["<C-b>"] = cmp_action.luasnip_jump_backward(),
 			["<C-y>"] = cmp.mapping.confirm({
 				-- documentation says this is important.
 				-- I don't know why.

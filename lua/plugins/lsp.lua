@@ -16,25 +16,24 @@ return {
 
 			-- language things
 			{ "simrat39/rust-tools.nvim" },
-			-- {
-			-- 	"ray-x/lsp_signature.nvim",
-			-- 	event = "VeryLazy",
-			-- 	opts = {},
-			-- 	config = function(_, opts)
-			-- 		local lsp_signature = require("lsp_signature")
-			-- 		
-   --        lsp_signature.setup(opts)
-			--
-			-- 		vim.keymap.set({ "n" }, "<C-k>", function()
-			-- 			lsp_signature.toggle_float_win()
-			-- 		end, { silent = true, noremap = true, desc = "toggle signature" })
-			--
-			-- 		vim.keymap.set({ "n" }, "<Leader>k", function()
-			-- 			vim.lsp.buf.signature_help()
-			-- 		end, { silent = true, noremap = true, desc = "toggle signature" })
-			-- 	end,
-			-- },
 		},
+		lazy = true,
+		config = function()
+      require("lsp-zero.settings").preset()
+		end,
+	},
+	{
+		"neovim/nvim-lspconfig",
+		cmd = "LspInfo",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "williamboman/mason-lspconfig.nvim" },
+			{ "williamboman/mason.nvim" },
+		},
+		config = function()
+      require("user.lsp").setup()
+		end,
 	},
 	{
 		"williamboman/mason.nvim",

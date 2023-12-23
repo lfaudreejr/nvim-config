@@ -9,7 +9,7 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 local lazy = require("user.lazy")
-local lsp = require("user.lsp")
+-- local lsp = require("user.lsp")
 
 if vim.g.colors_name == nil then
 	require("colors.customdark").setup()
@@ -18,4 +18,4 @@ else
 end
 
 lazy.setup()
-lsp.setup()
+-- lsp.setup()

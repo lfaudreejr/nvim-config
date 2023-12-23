@@ -2,8 +2,8 @@ return {
 	{
 		-- Autocompletion
 		-- "hrsh7th/nvim-cmp",
-    "yioneko/nvim-cmp",
-		event = { "BufReadPre", "BufNewFile" },
+		"yioneko/nvim-cmp",
+		event = { "InsertEnter" },
 		dependencies = {
 			-- Snippet Engine & its associated nvim-cmp source
 			"L3MON4D3/LuaSnip",
@@ -18,6 +18,9 @@ return {
 			-- Adds a number of user-friendly snippets
 			"rafamadriz/friendly-snippets",
 		},
+		config = function()
+      require("user.lsp.cmp").setup()
+		end,
 	},
 	{
 		"roobert/tailwindcss-colorizer-cmp.nvim",

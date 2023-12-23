@@ -6,10 +6,6 @@ function P.setup()
 		return nil
 	end
 
-	local navic_ok, navic = pcall(require, "nvim-navic")
-
-	lsp_zero.preset({})
-
 	lsp_zero.on_attach(function(client, bufnr)
 		-- see :help lsp-zero-keybindings
 		-- to learn the available actions
@@ -48,10 +44,16 @@ function P.setup()
 			vim.lsp.buf.signature_help()
 		end, opts)
 
-		if navic_ok and client.server_capabilities["documentSymbolProvider"] then
-			navic.attach(client, bufnr)
+		if client.server_capabilities.documentSymbolProvider then
+			require("nvim-navic").attach(client, bufnr)
 		end
 	end)
+
+	lsp_zero.set_server_config({
+		on_init = function(client)
+			client.server_capabilities.semanticTokensProvider = nil
+		end,
+	})
 
 	-- (Optional) Configure lua language server for neovim
 	-- require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
@@ -126,7 +128,7 @@ function P.setup()
 
 	-- require("typescript-tools").setup({})
 
-	require("user.lsp.cmp").setup()
+	-- require("user.lsp.cmp").setup()
 end
 
 return P
