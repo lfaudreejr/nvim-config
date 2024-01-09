@@ -1,7 +1,7 @@
 return {
 	{
 		"VonHeikemen/lsp-zero.nvim",
-		branch = "v2.x",
+		branch = "v3.x",
 		dependencies = {
 			-- LSP Support
 			{ "neovim/nvim-lspconfig" }, -- Required
@@ -18,13 +18,16 @@ return {
 			{ "simrat39/rust-tools.nvim" },
 		},
 		lazy = true,
-		config = function()
-      require("lsp-zero.settings").preset()
+		config = false,
+		init = function()
+			-- Disable automatic setup, we are doing it manually
+			vim.g.lsp_zero_extend_cmp = 0
+			vim.g.lsp_zero_extend_lspconfig = 0
 		end,
 	},
 	{
 		"neovim/nvim-lspconfig",
-		cmd = "LspInfo",
+		cmd = { "LspInfo", "LspInstall", "LspStart" },
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			{ "hrsh7th/cmp-nvim-lsp" },
@@ -32,12 +35,14 @@ return {
 			{ "williamboman/mason.nvim" },
 		},
 		config = function()
-      require("user.lsp").setup()
+			require("user.lsp").setup()
 		end,
 	},
 	{
 		"williamboman/mason.nvim",
 		opts = {},
+		lazy = false,
+		config = true,
 	},
 	{
 		"SmiteshP/nvim-navic",
