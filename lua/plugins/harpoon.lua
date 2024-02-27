@@ -1,3 +1,4 @@
+-- return {}
 return {
 	"ThePrimeagen/harpoon",
 	lazy = false,
