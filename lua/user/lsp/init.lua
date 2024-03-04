@@ -73,6 +73,7 @@ function P.setup()
 		},
 		handlers = {
 			lsp_zero.default_setup,
+			tsserver = lsp_zero.noop,
 			rust_analyzer = function()
 				local rust_tools = require("rust-tools")
 				rust_tools.setup({
@@ -81,9 +82,9 @@ function P.setup()
 					end,
 				})
 			end,
-			tsserver = function()
-				require("typescript-tools").setup({})
-			end,
+			-- tsserver = function()
+			-- 	require("typescript-tools").setup({})
+			-- end,
 			lua_ls = function()
 				local lua_opts = lsp_zero.nvim_lua_ls()
 				require("lspconfig").lua_ls.setup(lua_opts)

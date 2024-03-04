@@ -1,6 +1,7 @@
 local lazy = {}
 
-lazy.path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
 lazy.opts = {
 	defaults = { lazy = false, version = nil },
 	install = { missing = true },
@@ -37,9 +38,9 @@ end
 
 function lazy.setup()
 	-- You can "comment out" the line below after lazy.nvim is installed
-	lazy.install(lazy.path)
+	lazy.install(lazypath)
 
-	vim.opt.rtp:prepend(lazy.path)
+	vim.opt.rtp:prepend(lazypath)
 	--require("colors.customlight").setup()
 	--require("colors.base16").setup()
 	require("lazy").setup("plugins", lazy.opts)
