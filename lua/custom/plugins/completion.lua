@@ -23,6 +23,8 @@ return {
 			--  into multiple repos for maintenance purposes.
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-cmdline",
 
 			-- If you want to add a bunch of pre-configured snippets,
 			--    you can use this plugin to help you. It even has snippets
@@ -35,6 +37,8 @@ return {
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
 			luasnip.config.setup({})
+
+			local neogen = require("neogen")
 
 			cmp.setup({
 				snippet = {
@@ -69,9 +73,33 @@ return {
 				-- No, but seriously. Please read `:help ins-completion`, it is really good!
 				mapping = cmp.mapping.preset.insert({
 					-- Select the [n]ext item
-					["<C-j>"] = cmp.mapping.select_next_item(),
+					-- ["<C-j>"] = cmp.mapping.select_next_item(),
 					-- Select the [p]revious item
-					["<C-k>"] = cmp.mapping.select_prev_item(),
+					-- ["<C-k>"] = cmp.mapping.select_prev_item(),
+					["<C-j>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_next_item()
+						elseif luasnip.expand_or_jumpable() then
+							luasnip.expand_or_jump()
+						elseif neogen.jumpable() then
+							neogen.jump_next()
+						elseif has_words_before() then
+							cmp.complete()
+						else
+							fallback()
+						end
+					end, { "i", "s", "c" }),
+					["<C-k>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_prev_item()
+						elseif luasnip.jumpable(-1) then
+							luasnip.jump(-1)
+						elseif neogen.jumpable(1) then
+							neogen.jump_prev()
+						else
+							fallback()
+						end
+					end, { "i", "s", "c" }),
 
 					-- Accept ([y]es) the completion.
 					--  This will auto-import if your LSP supports it.
