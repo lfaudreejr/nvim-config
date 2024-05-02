@@ -45,3 +45,7 @@ vim.keymap.set(
 	'<cmd>lua require("utils").close_buffer_with_confirmation()<CR>',
 	{ desc = "Close buffer" }
 )
+
+-- buffer navigation
+vim.keymap.set("n", "<PageUp>", "<C-u>")
+vim.keymap.set("n", "<PageDown>", "<C-d>")
