@@ -2,6 +2,10 @@ return {
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
+		dependencies = {
+			{ "nvim-treesitter/nvim-treesitter-context" },
+			{ "JoosepAlviste/nvim-ts-context-commentstring" },
+		},
 		config = function()
 			-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 
