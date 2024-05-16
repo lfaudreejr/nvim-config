@@ -311,6 +311,7 @@ theme.set_highlights = function()
 	hl(0, "DashboardFooter", { fg = c.cyan, bg = "NONE" })
 
 	-- Cmp
+	hl(0, "CmpNormal", { fg = c.gray, bg = c.bg_dark, strikethrough = true })
 	hl(0, "CmpItemAbbrDeprecated", { fg = c.gray, bg = "NONE", strikethrough = true })
 	hl(0, "CmpItemAbbrMatch", { fg = c.ui3_blue, bg = "NONE" })
 	hl(0, "CmpItemAbbrMatchFuzzy", { fg = c.ui3_blue, bg = "NONE" })
