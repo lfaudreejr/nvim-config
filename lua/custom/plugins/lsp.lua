@@ -12,6 +12,7 @@ return {
 			{ "j-hui/fidget.nvim", opts = {} },
 		},
 		config = function()
+			local lspconfig = require("lspconfig")
 			-- Brief Aside: **What is LSP?**
 			--
 			-- LSP is an acronym you've probably heard, but might not understand what it is.
@@ -146,7 +147,25 @@ return {
 				--    https://github.com/pmizio/typescript-tools.nvim
 				--
 				-- But for many setups, the LSP (`tsserver`) will work just fine
-				tsserver = {},
+				tsserver = {
+					root_dir = function(filename, bufnr)
+						local denoRootDir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")(filename)
+						if denoRootDir then
+							print("this seems to be a deno project; returning nil so that tsserver does not attach")
+							return nil
+						else
+							print("this seems to be a ts project; return root dir based on package.json")
+						end
+
+						return lspconfig.util.root_pattern("package.json")(filename)
+					end,
+					single_file_support = false,
+				},
+				denols = {
+					root_dir = function(filename)
+						return lspconfig.util.root_pattern("deno.json", "deno.jsonc")(filename)
+					end,
+				},
 				--
 
 				lua_ls = {
