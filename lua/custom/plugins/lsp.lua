@@ -166,6 +166,11 @@ return {
 						return lspconfig.util.root_pattern("deno.json", "deno.jsonc")(filename)
 					end,
 				},
+				svelte = {
+					root_dir = function(filename)
+						return lspconfig.util.root_pattern("svelte.config.js")(filename)
+					end,
+				},
 				--
 
 				lua_ls = {
