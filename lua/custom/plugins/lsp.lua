@@ -146,12 +146,12 @@ return {
 				-- Some languages (like typescript) have entire language plugins that can be useful:
 				--    https://github.com/pmizio/typescript-tools.nvim
 				--
-				-- But for many setups, the LSP (`tsserver`) will work just fine
-				tsserver = {
+				-- But for many setups, the LSP (`ts_ls`) will work just fine
+				ts_ls = {
 					root_dir = function(filename, bufnr)
 						local denoRootDir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")(filename)
 						if denoRootDir then
-							print("this seems to be a deno project; returning nil so that tsserver does not attach")
+							print("this seems to be a deno project; returning nil so that ts_ls does not attach")
 							return nil
 						else
 							print("this seems to be a ts project; return root dir based on package.json")
