@@ -1,16 +1,17 @@
-return {
+local M = {
 	{
 		"yetone/avante.nvim",
 		event = "VeryLazy",
 		opts = {
 			-- add any opts here
-			provider = "claude", -- Only recommend using Claude
-			claude = {
-				endpoint = "https://api.anthropic.com",
-				model = "claude-3-5-sonnet-20240620",
-				temperature = 0,
-				max_tokens = 4096,
-			},
+			provider = "openai",
+			-- provider = "claude", -- Only recommend using Claude
+			-- claude = {
+			-- 	endpoint = "https://api.anthropic.com",
+			-- 	model = "claude-3-5-sonnet-20240620",
+			-- 	temperature = 0,
+			-- 	max_tokens = 4096,
+			-- },
 		},
 		dependencies = {
 			"stevearc/dressing.nvim",
@@ -44,3 +45,5 @@ return {
 		},
 	},
 }
+
+return {}

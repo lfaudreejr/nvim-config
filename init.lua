@@ -6,3 +6,5 @@ require("config.lazy")
 -- require("custom.colors.customdark").setup()
 -- vim.cmd([[colorscheme monokai-pro]])
 vim.cmd([[colorscheme solarized-osaka]])
+
+-- require("avante_lib").load()
