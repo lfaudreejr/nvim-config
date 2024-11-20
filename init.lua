@@ -7,4 +7,5 @@ require("config.lazy")
 -- vim.cmd([[colorscheme monokai-pro]])
 vim.cmd([[colorscheme solarized-osaka]])
 
+vim.lsp.inlay_hint.enable()
 -- require("avante_lib").load()
