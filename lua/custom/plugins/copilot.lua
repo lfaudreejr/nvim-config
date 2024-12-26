@@ -18,11 +18,11 @@ return {
 			},
 			--copilot_node_command = vim.fn.expand("$HOME") .. "/.nvm/versions/node/v18.17.1/bin/node"
 		},
-	},
-	{
-		"zbirenbaum/copilot-cmp",
-		-- event = "InsertEnter",
-		dependencies = { "zbirenbaum/copilot.lua" },
-		opts = {},
-	},
+	}
+	-- {
+	-- 	"zbirenbaum/copilot-cmp",
+	-- 	-- event = "InsertEnter",
+	-- 	dependencies = { "zbirenbaum/copilot.lua" },
+	-- 	opts = {},
+	-- },
 }
