@@ -91,9 +91,10 @@ return {
 			-- default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
 			sources = {
-				completion = {
-					enabled_providers = { "lsp", "path", "snippets", "buffer", "ripgrep", "copilot" },
-				},
+				default = { "lsp", "path", "snippets", "buffer", "ripgrep", "copilot" },
+				-- completion = {
+				-- 	enabled_providers = { "lsp", "path", "snippets", "buffer", "ripgrep", "copilot" },
+				-- },
 				-- optionally disable cmdline completions
 				-- cmdline = {},
 				providers = {
