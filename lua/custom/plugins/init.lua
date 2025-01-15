@@ -2,11 +2,9 @@ return {
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically,
 	{
 		"rcarriga/nvim-notify",
-		config = function()
-			require('nvim-notify').setup({
-				top_down = true
-			})
-		end
+		opts = {
+			top_down = true
+		}
 	},
 	{
 		"folke/neodev.nvim",
