@@ -19,11 +19,12 @@ return {
 		formatters_by_ft = {
 			lua = { "stylua" },
 			python = { "isort", "black" },
-			javascript = { { "prettierd", "prettier" } },
+			javascript = { "prettierd", "prettier" },
 			json = { "fixjson" },
-			typescript = { { "prettierd", "prettier" } },
-			svelte = { { "prettierd", "prettier" } },
+			typescript = { "prettierd", "prettier" },
+			svelte = { "prettierd", "prettier" },
 			go = { "gofmt" },
+			ocaml = { "ocamlformat" }
 		},
 		-- Set up format-on-save
 		-- format_on_save = { timeout_ms = 500, lsp_fallback = true },

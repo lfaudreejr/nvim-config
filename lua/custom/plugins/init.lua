@@ -3,8 +3,8 @@ return {
 	{
 		"rcarriga/nvim-notify",
 		opts = {
-			top_down = true
-		}
+			top_down = true,
+		},
 	},
 	{
 		"folke/neodev.nvim",
@@ -171,5 +171,5 @@ return {
 		"norcalli/nvim-colorizer.lua",
 		event = "VeryLazy",
 		opts = { "css", "html", "javascript", "lua", "toml" },
-	},
+	}
 }

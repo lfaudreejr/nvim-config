@@ -226,7 +226,7 @@ return {
 							-- diagnostics = { disable = { 'missing-fields' } },
 						},
 					},
-				},
+				}
 			}
 
 			-- Ensure the servers and tools above are installed
@@ -254,6 +254,7 @@ return {
 						-- certain features of an LSP (for example, turning off formatting for tsserver)
 						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 						require("lspconfig")[server_name].setup(server)
+						require("lspconfig").ocamllsp.setup({})
 					end,
 				},
 			})
