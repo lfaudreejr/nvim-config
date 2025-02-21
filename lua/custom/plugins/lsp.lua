@@ -200,6 +200,13 @@ return {
 					end,
 				},
 				--
+				superhtml = {
+					filetypes = { "superhtml", "html" },
+				},
+
+				templ = {
+					filetypes = { "templ" },
+				},
 
 				lua_ls = {
 					-- cmd = {...},
@@ -226,7 +233,8 @@ return {
 							-- diagnostics = { disable = { 'missing-fields' } },
 						},
 					},
-				}
+				},
+
 			}
 
 			-- Ensure the servers and tools above are installed

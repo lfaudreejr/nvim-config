@@ -4,7 +4,7 @@ return {
 	config = function()
 		require("mini.jump").setup()
 		require("mini.cursorword").setup()
-		require("mini.pairs").setup()
+		-- require("mini.pairs").setup()
 		-- Better Around/Inside textobjects
 		--
 		-- Examples:
