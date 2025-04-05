@@ -208,6 +208,62 @@ return {
 					filetypes = { "templ" },
 				},
 
+				tailwindcss = {
+					filetypes = {
+						"aspnetcorerazor",
+						"astro",
+						"astro-markdown",
+						"blade",
+						"clojure",
+						"django-html",
+						"htmldjango",
+						"edge",
+						"eelixir",
+						"elixir",
+						"ejs",
+						"erb",
+						"eruby",
+						"gohtml",
+						"gohtmltmpl",
+						"haml",
+						"handlebars",
+						"hbs",
+						"html",
+						"htmlangular",
+						"html-eex",
+						"heex",
+						"jade",
+						"leaf",
+						"liquid",
+						"markdown",
+						"mdx",
+						"mustache",
+						"njk",
+						"nunjucks",
+						"php",
+						"razor",
+						"slim",
+						"twig",
+						"css",
+						"less",
+						"postcss",
+						"sass",
+						"scss",
+						"stylus",
+						"sugarss",
+						"javascript",
+						"javascriptreact",
+						"reason",
+						"rescript",
+						"typescript",
+						"typescriptreact",
+						"vue",
+						"svelte",
+						"templ",
+						"ml",
+					},
+				},
+
 				lua_ls = {
 					-- cmd = {...},
 					-- filetypes { ...},
@@ -234,7 +290,6 @@ return {
 						},
 					},
 				},
-
 			}
 
 			-- Ensure the servers and tools above are installed
@@ -262,9 +317,30 @@ return {
 						-- certain features of an LSP (for example, turning off formatting for tsserver)
 						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 						require("lspconfig")[server_name].setup(server)
-						require("lspconfig").ocamllsp.setup({})
 					end,
 				},
+			})
+
+			require("lspconfig").ocamllsp.setup({
+				filetypes = {
+					"ocaml",
+					"ocaml.menhir",
+					"ocaml.interface",
+					"ocaml.ocamllex",
+					"reason",
+					"dune",
+				},
+				root_dir = function(fname)
+					return require("lspconfig.util").root_pattern(
+						"*.opam",
+						"esy.json",
+						"package.json",
+						".git",
+						"dune-project",
+						"dune-workspace",
+						"*.ml"
+					)(fname)
+				end,
 			})
 		end,
 	},

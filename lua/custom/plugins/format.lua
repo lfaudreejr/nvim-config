@@ -24,8 +24,9 @@ return {
 			typescript = { "prettierd", "prettier" },
 			svelte = { "prettierd", "prettier" },
 			go = { "gofmt" },
-			ocaml = { "ocamlformat" },
-			html = { "superhtml" }
+			ocaml = { "ocamlformat", "ocp-indent" },
+			html = { "superhtml" },
+			rust = { "rustfmt", lsp_format = "fallback" },
 		},
 		-- Set up format-on-save
 		-- format_on_save = { timeout_ms = 500, lsp_fallback = true },
