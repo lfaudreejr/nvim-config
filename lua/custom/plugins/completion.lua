@@ -218,10 +218,11 @@ return {
 							path = "[PATH]",
 							luasnip = "[SNIP]",
 						},
-						before = function(entry, vim_item)
-							vim_item = require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
-							return vim_item
-						end,
+						before = require("tailwind-tools.cmp").lspkind_format
+						-- before = function(entry, vim_item)
+						-- 	vim_item = require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
+						-- 	return vim_item
+						-- end,
 					}),
 				},
 
@@ -297,9 +298,9 @@ return {
 				window = {
 					completion = {
 						border = "rounded",
-						winhighlight = "Normal:CmpNormal"
-					}
-				}
+						winhighlight = "Normal:CmpNormal",
+					},
+				},
 			})
 			-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 			cmp.setup.cmdline({ "/", "?" }, {
@@ -319,13 +320,25 @@ return {
 			})
 		end,
 	},
+	-- tailwind-tools.lua
 	{
-		"roobert/tailwindcss-colorizer-cmp.nvim",
-		-- optionally, override the default options:
-		config = function()
-			require("tailwindcss-colorizer-cmp").setup({
-				color_square_width = 2,
-			})
-		end,
+		"luckasRanarison/tailwind-tools.nvim",
+		name = "tailwind-tools",
+		build = ":UpdateRemotePlugins",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-telescope/telescope.nvim", -- optional
+			"neovim/nvim-lspconfig", -- optional
+		},
+		opts = {}, -- your configuration
 	},
+	-- {
+	-- 	"roobert/tailwindcss-colorizer-cmp.nvim",
+	-- 	-- optionally, override the default options:
+	-- 	config = function()
+	-- 		require("tailwindcss-colorizer-cmp").setup({
+	-- 			color_square_width = 2,
+	-- 		})
+	-- 	end,
+	-- },
 }
