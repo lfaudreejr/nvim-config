@@ -149,6 +149,7 @@ return {
 				--    https://github.com/pmizio/typescript-tools.nvim
 				--
 				-- But for many setups, the LSP (`ts_ls`) will work just fine
+				volar = {},
 				ts_ls = {
 					root_dir = function(filename, bufnr)
 						local denoRootDir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")(filename)
