@@ -3,8 +3,8 @@ return {
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			-- Automatically install LSPs and related tools to stdpath for neovim
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
+			{ "williamboman/mason.nvim", version = "1.11.0" },
+			{ "williamboman/mason-lspconfig.nvim", version = "1.32.0" },
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			-- 'saghen/blink.cmp',
 
@@ -303,7 +303,7 @@ return {
 
 			-- You can add other tools here that you want Mason to install
 			-- for you, so that they are available from within Neovim.
-			-- local ensure_installed = vim.tbl_keys(servers or {})
+			local ensure_installed = vim.tbl_keys(servers or {})
 			-- vim.list_extend(ensure_installed, {
 			-- 	"stylua", -- Used to format lua code
 			-- })
@@ -311,6 +311,8 @@ return {
 
 			require("mason-lspconfig").setup({
 				automatic_enable = false,
+				ensure_installed = ensure_installed,
+				automatic_installation = true,
 				handlers = {
 					function(server_name)
 						local server = servers[server_name] or {}
@@ -323,27 +325,27 @@ return {
 				},
 			})
 
-			require("lspconfig").ocamllsp.setup({
-				filetypes = {
-					"ocaml",
-					"ocaml.menhir",
-					"ocaml.interface",
-					"ocaml.ocamllex",
-					"reason",
-					"dune",
-				},
-				root_dir = function(fname)
-					return require("lspconfig.util").root_pattern(
-						"*.opam",
-						"esy.json",
-						"package.json",
-						".git",
-						"dune-project",
-						"dune-workspace",
-						"*.ml"
-					)(fname)
-				end,
-			})
+			-- require("lspconfig").ocamllsp.setup({
+			-- 	filetypes = {
+			-- 		"ocaml",
+			-- 		"ocaml.menhir",
+			-- 		"ocaml.interface",
+			-- 		"ocaml.ocamllex",
+			-- 		"reason",
+			-- 		"dune",
+			-- 	},
+			-- 	root_dir = function(fname)
+			-- 		return require("lspconfig.util").root_pattern(
+			-- 			"*.opam",
+			-- 			"esy.json",
+			-- 			"package.json",
+			-- 			".git",
+			-- 			"dune-project",
+			-- 			"dune-workspace",
+			-- 			"*.ml"
+			-- 		)(fname)
+			-- 	end,
+			-- })
 		end,
 	},
 	{

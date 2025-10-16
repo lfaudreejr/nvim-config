@@ -1,23 +1,23 @@
 local M = {
-	{
-		"olimorris/codecompanion.nvim",
-		opts = {
-			adapters = {
-				openai = function()
-					return require("codecompanion.adapters").extend("openai", {
-						env = {
-							api_key = os.getenv("OPENAI_API_KEY"),
-						},
-					})
-				end,
-			},
-		},
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-			"ravitemer/mcphub.nvim",
-		},
-	},
+	-- {
+	-- 	"olimorris/codecompanion.nvim",
+	-- 	opts = {
+	-- 		adapters = {
+	-- 			openai = function()
+	-- 				return require("codecompanion.adapters").extend("openai", {
+	-- 					env = {
+	-- 						api_key = os.getenv("OPENAI_API_KEY"),
+	-- 					},
+	-- 				})
+	-- 			end,
+	-- 		},
+	-- 	},
+	-- 	dependencies = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"nvim-treesitter/nvim-treesitter",
+	-- 		"ravitemer/mcphub.nvim",
+	-- 	},
+	-- },
 	-- {
 	-- 	"yetone/avante.nvim",
 	-- 	event = "VeryLazy",
