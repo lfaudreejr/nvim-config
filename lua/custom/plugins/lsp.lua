@@ -1,19 +1,12 @@
 return {
-	{ -- LSP Configuration & Plugins
-		"neovim/nvim-lspconfig",
+	{ -- LSP Configuration using native vim.lsp.config API
+		"williamboman/mason.nvim",
+		version = "1.11.0",
 		dependencies = {
-			-- Automatically install LSPs and related tools to stdpath for neovim
-			{ "williamboman/mason.nvim", version = "1.11.0" },
-			{ "williamboman/mason-lspconfig.nvim", version = "1.32.0" },
-			"WhoIsSethDaniel/mason-tool-installer.nvim",
-			-- 'saghen/blink.cmp',
-
 			-- Useful status updates for LSP.
-			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
 			{ "j-hui/fidget.nvim", opts = {} },
 		},
 		config = function()
-			local lspconfig = require("lspconfig")
 			-- Brief Aside: **What is LSP?**
 			--
 			-- LSP is an acronym you've probably heard, but might not understand what it is.
@@ -59,29 +52,65 @@ return {
 					-- Jump to the definition of the word under your cursor.
 					--  This is where a variable was first declared, or where a function is defined, etc.
 					--  To jump back, press <C-T>.
-					map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+					map("gd", function()
+						if pcall(require, "telescope.builtin") then
+							require("telescope.builtin").lsp_definitions()
+						else
+							vim.lsp.buf.definition()
+						end
+					end, "[G]oto [D]efinition")
 
 					-- Find references for the word under your cursor.
-					map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+					map("gr", function()
+						if pcall(require, "telescope.builtin") then
+							require("telescope.builtin").lsp_references()
+						else
+							vim.lsp.buf.references()
+						end
+					end, "[G]oto [R]eferences")
 
 					-- Jump to the implementation of the word under your cursor.
 					--  Useful when your language has ways of declaring types without an actual implementation.
-					map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+					map("gI", function()
+						if pcall(require, "telescope.builtin") then
+							require("telescope.builtin").lsp_implementations()
+						else
+							vim.lsp.buf.implementation()
+						end
+					end, "[G]oto [I]mplementation")
 
 					-- Jump to the type of the word under your cursor.
 					--  Useful when you're not sure what type a variable is and you want to see
 					--  the definition of its *type*, not where it was *defined*.
-					map("<leader>K", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
+					map("<leader>K", function()
+						if pcall(require, "telescope.builtin") then
+							require("telescope.builtin").lsp_type_definitions()
+						else
+							vim.lsp.buf.type_definition()
+						end
+					end, "Type [D]efinition")
 
 					-- Fuzzy find all the symbols in your current document.
 					--  Symbols are things like variables, functions, types, etc.
-					map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+					map("<leader>ds", function()
+						if pcall(require, "telescope.builtin") then
+							require("telescope.builtin").lsp_document_symbols()
+						else
+							vim.lsp.buf.document_symbol()
+						end
+					end, "[D]ocument [S]ymbols")
 
 					-- Fuzzy find all the symbols in your current workspace
 					--  Similar to document symbols, except searches over your whole project.
 					map(
 						"<leader>ws",
-						require("telescope.builtin").lsp_dynamic_workspace_symbols,
+						function()
+							if pcall(require, "telescope.builtin") then
+								require("telescope.builtin").lsp_dynamic_workspace_symbols()
+							else
+								vim.lsp.buf.workspace_symbol()
+							end
+						end,
 						"[W]orkspace [S]ymbols"
 					)
 
@@ -121,231 +150,178 @@ return {
 				end,
 			})
 
-			-- LSP servers and clients are able to communicate to each other what features they support.
-			--  By default, Neovim doesn't support everything that is in the LSP Specification.
-			--  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
-			--  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
-			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			-- capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-			-- capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
+		-- LSP servers and clients are able to communicate to each other what features they support.
+		--  By default, Neovim doesn't support everything that is in the LSP Specification.
+		--  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
+		--  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
-			-- Enable the following language servers
-			--  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
-			--
-			--  Add any additional override configuration in the following tables. Available keys are:
-			--  - cmd (table): Override the default command used to start the server
-			--  - filetypes (table): Override the default list of associated filetypes for the server
-			--  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
-			--  - settings (table): Override the default settings passed when initializing the server.
-			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
-			local servers = {
-				-- clangd = {},
-				gopls = {},
-				-- pyright = {},
-				rust_analyzer = {},
-				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-				--
-				-- Some languages (like typescript) have entire language plugins that can be useful:
-				--    https://github.com/pmizio/typescript-tools.nvim
-				--
-				-- But for many setups, the LSP (`ts_ls`) will work just fine
-				volar = {},
-				ts_ls = {
-					root_dir = function(filename, bufnr)
-						local denoRootDir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")(filename)
-						if denoRootDir then
-							print("this seems to be a deno project; returning nil so that ts_ls does not attach")
-							return nil
-						else
-							print("this seems to be a ts project; return root dir based on package.json")
-						end
-
-						return lspconfig.util.root_pattern("package.json")(filename)
-					end,
-					settings = {
-						typescript = {
-							inlayHints = {
-								includeInlayParameterNameHints = "all",
-								includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-								includeInlayFunctionParameterTypeHints = true,
-								includeInlayVariableTypeHints = true,
-								includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-								includeInlayPropertyDeclarationTypeHints = true,
-								includeInlayFunctionLikeReturnTypeHints = true,
-								includeInlayEnumMemberValueHints = true,
-							},
-						},
-						javascript = {
-							inlayHints = {
-								includeInlayParameterNameHints = "all",
-								includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-								includeInlayFunctionParameterTypeHints = true,
-								includeInlayVariableTypeHints = true,
-								includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-								includeInlayPropertyDeclarationTypeHints = true,
-								includeInlayFunctionLikeReturnTypeHints = true,
-								includeInlayEnumMemberValueHints = true,
-							},
-						},
-					},
-					single_file_support = false,
-				},
-				denols = {
-					root_dir = function(filename)
-						return lspconfig.util.root_pattern("deno.json", "deno.jsonc")(filename)
-					end,
-				},
-				svelte = {
-					root_dir = function(filename)
-						return lspconfig.util.root_pattern("svelte.config.js")(filename)
-					end,
-				},
-				--
-				superhtml = {
-					filetypes = { "superhtml", "html" },
-				},
-
-				templ = {
-					filetypes = { "templ" },
-				},
-
-				tailwindcss = {
-					filetypes = {
-						"aspnetcorerazor",
-						"astro",
-						"astro-markdown",
-						"blade",
-						"clojure",
-						"django-html",
-						"htmldjango",
-						"edge",
-						"eelixir",
-						"elixir",
-						"ejs",
-						"erb",
-						"eruby",
-						"gohtml",
-						"gohtmltmpl",
-						"haml",
-						"handlebars",
-						"hbs",
-						"html",
-						"htmlangular",
-						"html-eex",
-						"heex",
-						"jade",
-						"leaf",
-						"liquid",
-						"markdown",
-						"mdx",
-						"mustache",
-						"njk",
-						"nunjucks",
-						"php",
-						"razor",
-						"slim",
-						"twig",
-						"css",
-						"less",
-						"postcss",
-						"sass",
-						"scss",
-						"stylus",
-						"sugarss",
-						"javascript",
-						"javascriptreact",
-						"reason",
-						"rescript",
-						"typescript",
-						"typescriptreact",
-						"vue",
-						"svelte",
-						"templ",
-						"ml",
-					},
-				},
-
-				lua_ls = {
-					-- cmd = {...},
-					-- filetypes { ...},
-					-- capabilities = {},
-					settings = {
-						Lua = {
-							runtime = { version = "LuaJIT" },
-							workspace = {
-								checkThirdParty = false,
-								-- Tells lua_ls where to find all the Lua files that you have loaded
-								-- for your neovim configuration.
-								library = {
-									"${3rd}/luv/library",
-									unpack(vim.api.nvim_get_runtime_file("", true)),
-								},
-								-- If lua_ls is really slow on your computer, you can try this instead:
-								-- library = { vim.env.VIMRUNTIME },
-							},
-							completion = {
-								callSnippet = "Replace",
-							},
-							-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-							-- diagnostics = { disable = { 'missing-fields' } },
-						},
-					},
-				},
-			}
-
-			-- Ensure the servers and tools above are installed
-			--  To check the current status of installed tools and/or manually install
-			--  other tools, you can run
-			--    :Mason
-			--
-			--  You can press `g?` for help in this menu
+			-- Setup Mason for installing LSP servers
 			require("mason").setup()
 
-			-- You can add other tools here that you want Mason to install
-			-- for you, so that they are available from within Neovim.
-			local ensure_installed = vim.tbl_keys(servers or {})
-			-- vim.list_extend(ensure_installed, {
-			-- 	"stylua", -- Used to format lua code
-			-- })
-			-- require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+			-- Helper function to find root directory
+			local function root_pattern(...)
+				local patterns = { ... }
+				return function(fname)
+					if type(fname) ~= "string" then
+						return nil
+					end
+					local start_path = vim.fs.dirname(fname)
+					for _, pattern in ipairs(patterns) do
+						if type(pattern) == "string" then
+							local found = vim.fs.find(pattern, {
+								path = start_path,
+								upward = true,
+								type = pattern:match("/$") and "directory" or "file",
+							})[1]
+							if found then
+								return vim.fs.dirname(found)
+							end
+						end
+					end
+					return nil
+				end
+			end
 
-			require("mason-lspconfig").setup({
-				automatic_enable = false,
-				ensure_installed = ensure_installed,
-				automatic_installation = true,
-				handlers = {
-					function(server_name)
-						local server = servers[server_name] or {}
-						-- This handles overriding only values explicitly passed
-						-- by the server configuration above. Useful when disabling
-						-- certain features of an LSP (for example, turning off formatting for tsserver)
-						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-						require("lspconfig")[server_name].setup(server)
-					end,
+		-- LSP server configurations
+		local servers = {
+			gopls = {
+				cmd = { "gopls" },
+				filetypes = { "go", "gomod", "gowork", "gotmpl" },
+				root_markers = { "go.work", "go.mod", ".git" },
+			},
+			rust_analyzer = {
+				cmd = { "rust-analyzer" },
+				filetypes = { "rust" },
+				root_markers = { "Cargo.toml", "rust-project.json", ".git" },
+			},
+			lua_ls = {
+				cmd = { "lua-language-server" },
+				filetypes = { "lua" },
+				root_markers = { ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml", "selene.toml", "selene.yml", ".git" },
+				settings = {
+					Lua = {
+						runtime = { version = "LuaJIT" },
+						workspace = {
+							checkThirdParty = false,
+							library = {
+								"${3rd}/luv/library",
+								unpack(vim.api.nvim_get_runtime_file("", true)),
+							},
+						},
+						completion = {
+							callSnippet = "Replace",
+						},
+					},
 				},
-			})
+			},
+			ts_ls = {
+				cmd = { "typescript-language-server", "--stdio" },
+				filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+				root_markers = { "package.json", "tsconfig.json", "jsconfig.json", ".git" },
+				settings = {
+					typescript = {
+						inlayHints = {
+							includeInlayParameterNameHints = "all",
+							includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+							includeInlayFunctionParameterTypeHints = true,
+							includeInlayVariableTypeHints = true,
+							includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+							includeInlayPropertyDeclarationTypeHints = true,
+							includeInlayFunctionLikeReturnTypeHints = true,
+							includeInlayEnumMemberValueHints = true,
+						},
+					},
+					javascript = {
+						inlayHints = {
+							includeInlayParameterNameHints = "all",
+							includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+							includeInlayFunctionParameterTypeHints = true,
+							includeInlayVariableTypeHints = true,
+							includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+							includeInlayPropertyDeclarationTypeHints = true,
+							includeInlayFunctionLikeReturnTypeHints = true,
+							includeInlayEnumMemberValueHints = true,
+						},
+					},
+				},
+			},
+		}
 
-			-- require("lspconfig").ocamllsp.setup({
-			-- 	filetypes = {
-			-- 		"ocaml",
-			-- 		"ocaml.menhir",
-			-- 		"ocaml.interface",
-			-- 		"ocaml.ocamllex",
-			-- 		"reason",
-			-- 		"dune",
-			-- 	},
-			-- 	root_dir = function(fname)
-			-- 		return require("lspconfig.util").root_pattern(
-			-- 			"*.opam",
-			-- 			"esy.json",
-			-- 			"package.json",
-			-- 			".git",
-			-- 			"dune-project",
-			-- 			"dune-workspace",
-			-- 			"*.ml"
-			-- 		)(fname)
-			-- 	end,
-			-- })
+		-- Function to start LSP server for a buffer
+		local function start_lsp_server(bufnr)
+			local filetype = vim.bo[bufnr].filetype
+			if not filetype or filetype == "" then
+				return
+			end
+
+			-- Find matching server for this filetype
+			for server_name, config in pairs(servers) do
+				for _, ft in ipairs(config.filetypes) do
+					if ft == filetype then
+						-- Check if server is already running for this buffer
+						local existing_clients = vim.lsp.get_clients({ bufnr = bufnr })
+						for _, client in ipairs(existing_clients) do
+							if client.name == server_name then
+								return -- Server already running
+							end
+						end
+
+						-- Check if server executable exists
+						if vim.fn.executable(config.cmd[1]) == 1 then
+							-- Start the server
+							vim.lsp.start({
+								name = server_name,
+								cmd = config.cmd,
+								filetypes = config.filetypes,
+								root_dir = function(filename)
+									return root_pattern(unpack(config.root_markers))(filename)
+								end,
+								capabilities = capabilities,
+								settings = config.settings,
+								bufnr = bufnr,
+							})
+							print("Started LSP server:", server_name, "for", filetype)
+						else
+							print(server_name .. " not found - LSP features will not be available for", filetype)
+						end
+						return
+					end
+				end
+			end
+		end
+
+		-- Start LSP servers when files are opened
+		vim.api.nvim_create_autocmd("FileType", {
+			group = vim.api.nvim_create_augroup("lsp-start", { clear = true }),
+			callback = function(event)
+				start_lsp_server(event.buf)
+			end,
+		})
+
+		-- Also start for already open buffers
+		vim.api.nvim_create_autocmd("VimEnter", {
+			group = vim.api.nvim_create_augroup("lsp-start-existing", { clear = true }),
+			callback = function()
+				for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+					if vim.api.nvim_buf_is_loaded(bufnr) and vim.bo[bufnr].filetype ~= "" then
+						start_lsp_server(bufnr)
+					end
+				end
+			end,
+		})
+		
+		-- Debug: Print LSP status
+		vim.api.nvim_create_autocmd("LspAttach", {
+			group = vim.api.nvim_create_augroup("debug-lsp-attach", { clear = true }),
+			callback = function(event)
+				local client = vim.lsp.get_client_by_id(event.data.client_id)
+				if client then
+					print("LSP attached:", client.name, "to buffer", event.buf)
+				end
+			end,
+		})
 		end,
 	},
 	{

@@ -328,7 +328,7 @@ return {
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-telescope/telescope.nvim", -- optional
-			"neovim/nvim-lspconfig", -- optional
+			-- Removed nvim-lspconfig dependency - using native vim.lsp.config
 		},
 		opts = {}, -- your configuration
 	},
